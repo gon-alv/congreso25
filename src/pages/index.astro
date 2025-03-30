@@ -1,11 +1,8 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import BlogPost from '../layouts/BlogPost.astro';
+import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout title="Bienvenida a ENSUCh 2025" description="ENSUCh 2025">
@@ -19,6 +16,12 @@ import '../styles/global.css';
 		<p>ENSUCh es un evento que reúne a estudiantes, profesionales y entusiastas de la tecnología para aprender, compartir y colaborar en proyectos innovadores.</p>
 		<p>¡Esperamos que disfrutes de tu experiencia!</p>
 	</main>
+	<BlogPost title="Primer post">
+		<p>¡Hola a todos! Este es nuestro primer post en el blog de ENSUCh 2025. Aquí compartiremos noticias, actualizaciones y recursos relacionados con el evento. ¡Mantente atento!</p>
+		<p class="dateContainer">
+			<span class="date">30 de Marzo de 2025, 14:18 hrs.</span>
+		</p>
+	</BlogPost>
 </Layout>
 
 <style>
@@ -34,5 +37,11 @@ import '../styles/global.css';
 		font-size: 2rem;
 		margin-bottom: 1rem;
 		font-weight: bold;
+	}
+	.dateContainer {
+		color: rgba(68, 68, 68, 0.5);
+		margin-top: .7rem;
+		font-style: italic;
+
 	}
 </style>
