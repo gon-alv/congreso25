@@ -1,12 +1,38 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 import '../styles/global.css';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Bienvenida a ENSUCh 2025" description="ENSUCh 2025">
+	<!-- <Hero /> -->
+	<Hero />
+	<!--<Welcome />-->
+	<main>
+	<div class="text-justify m-5 transparent rounded-lg p-4">
+		<h1>Bienvenida a ENSUCh 2025</h1>
+		<p>¡Estamos emocionados de tenerte aquí!</p>
+		<p>ENSUCh es un evento que reúne a estudiantes, profesionales y entusiastas de la tecnología para aprender, compartir y colaborar en proyectos innovadores.</p>
+		<p>¡Esperamos que disfrutes de tu experiencia!</p>
+	</main>
 </Layout>
+
+<style>
+	main {
+		background-color: rgba(230, 230, 230, 0.568);
+		border-radius: 20px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		margin: 150px;
+	}
+	h1{
+		text-align: center;
+		text-color: rgba(0, 0, 0, 0.8);
+		font-size: 2rem;
+		margin-bottom: 1rem;
+		font-weight: bold;
+	}
+</style>
