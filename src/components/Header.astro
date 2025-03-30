@@ -2,10 +2,55 @@
 import '../styles/global.css';
 ---
 <header>
-    <div class="bg-[#0055b7] h-25">
-        <div class="absolute left-5 top-3 flex">
-            <a href="https://www.ulagos.cl"><img src='/src/images/logo.png' alt="Logo" class="left-0 h-16 w-auto mx-auto" /></a>
+
+
+<nav class="bg-violet-500 text-white dark:bg-violet-950 text-white item-center justify-content shadow-md">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://www.ulagos.cl/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="src/images/logo.png" class="h-15" alt="Flowbite Logo">
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <img src="src/images/ai-logo.png" class="h-15" alt="AI Logo"> 
         </div>
-        <h1 class="text-4xl text-white text-center py-5 font-bold">Hola mundo!</h1>
+        <div class="items-center space-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <a href="/#"><li class="p-1 flex bg-blue-400 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-900 shadow text-2xl ">Acerca de</li></a>
+            <a href="/#"><li class="p-1 flex bg-blue-400 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-900 shadow text-2xl ">Programa</li></a>
+            <a href="/#"><li class="p-1 flex bg-blue-400 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-900 shadow text-2xl ">Contacto</li></a>
+        </div>
     </div>
+</nav>
+
+
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('header');
+        const navbar = document.querySelector('nav');
+
+        if (!header || !navbar) {
+            return;
+        }
+
+        const headerHeight = header.offsetHeight;
+        const navbarHeight = navbar.offsetHeight;
+        const navbarOffsetTop = navbar.offsetTop;
+
+        window.addEventListener('scroll', () => {
+        if (window.scrollY >= navbarOffsetTop - headerHeight) {
+            navbar.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'z-10');
+            navbar.classList.remove('relative');
+            document.body.style.paddingTop = `${navbarHeight}px`; // Evitar salto de contenido
+        } else {
+        navbar.classList.remove('fixed', 'top-0', 'left-0', 'right-0', 'z-10');
+        navbar.classList.add('relative');
+        document.body.style.paddingTop = '0';
+      }
+    });
+  });
+</script>
+<style>
+    nav {
+        position: relative; /* Inicialmente relativa al flujo normal */
+    }
+</style>
