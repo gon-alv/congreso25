@@ -1,56 +1,57 @@
 ---
-import '../styles/global.css';
+//import type { AstroComponentFactory } from "astro";
+import '../styles/global.css'
+
+const navItems = [
+    { label: "Inicio", href:"/" },
+    { label: "Sobre Nosotras", href:"/#" },
+    { label: "Programa", href:"/#" },
+    { label: "Chiloe", href:"/#" },
+    { label: "Contacto", href:"/contacto"}
+];
 ---
-<header>
 
-
-<nav class="bg-violet-500 text-white dark:bg-violet-950 text-white item-center justify-content shadow-md">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://www.ulagos.cl/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="src/images/logo.png" class="h-15" alt="Flowbite Logo">
+<header class="fixed top-0 left-0 w-full bg-[var(--primary-color)] z-[999] shadow-xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+    <!-- Logo -->
+        <a href="/" class="flex items-center space-x-2">
+            <img src="/logo.svg" alt="Logo" class="h-8 w-auto" />
+            <span class="font-semibold text-lg">MiSitio</span>
         </a>
-        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <img src="src/images/ai-logo.png" class="h-15" alt="AI Logo"> 
-        </div>
-        <div class="items-center space-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-            <a href="/#"><li class="p-1 flex bg-blue-400 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-900 shadow text-2xl ">Acerca de</li></a>
-            <a href="/#"><li class="p-1 flex bg-blue-400 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-900 shadow text-2xl ">Programa</li></a>
-            <a href="/#"><li class="p-1 flex bg-blue-400 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-900 shadow text-2xl ">Contacto</li></a>
-        </div>
+
+    <!-- Botón de menú (solo visible en móvil) -->
+        <button
+        id="menu-toggle"
+        class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+        aria-label="Abrir menú">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Navegación (desktop) -->
+        <nav class="hidden md:flex font-bold absolute left-1/2 transform -translate-x-1/2 space-x-6 text-white">
+            {navItems.map((item) => (
+            <a href={item.href} class="hover:text-[var(--active-text)] transition">{item.label}</a>
+            ))}
+        </nav>
     </div>
-</nav>
 
+<!-- Menú móvil desplegable -->
+    <div
+    id="mobile-menu"
+    class="hidden md:hidden px-4 pb-4 bg-white border-t border-gray-200">
+    {navItems.map((item) => (
+    <a href={item.href} class="block py-2 text-gray-800 hover:text-[var(--active-text)]">{item.label}</a>
+    ))}
+    </div>
 
+    <script type="module">
+        const toggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        toggle?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+        });
+    </script>
 </header>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const header = document.querySelector('header');
-        const navbar = document.querySelector('nav');
-
-        if (!header || !navbar) {
-            return;
-        }
-
-        const headerHeight = header.offsetHeight;
-        const navbarHeight = navbar.offsetHeight;
-        const navbarOffsetTop = navbar.offsetTop;
-
-        window.addEventListener('scroll', () => {
-        if (window.scrollY >= navbarOffsetTop - headerHeight) {
-            navbar.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'z-10');
-            navbar.classList.remove('relative');
-            document.body.style.paddingTop = `${navbarHeight}px`; // Evitar salto de contenido
-        } else {
-        navbar.classList.remove('fixed', 'top-0', 'left-0', 'right-0', 'z-10');
-        navbar.classList.add('relative');
-        document.body.style.paddingTop = '0';
-      }
-    });
-  });
-</script>
-<style>
-    nav {
-        position: relative; /* Inicialmente relativa al flujo normal */
-    }
-</style>
