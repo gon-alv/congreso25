@@ -1,15 +1,12 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+
+export interface Props {
+    class?: string;
+}
+const { class: className } = Astro.props;
 ---
-<main>
-    <section class="relative w-full h-screen flex items-center justify-center">
-        <img src="src/images/placeholder/japan-night.jpg
-        " alt="Fondo" class="absolute w-full max-h-200 opacity-85 object-cover">
-    </section>
-</main>
 
-<style>
-    main{
-
-    }
-</style>
+<section class={className}>
+    <div class="w-full h-[75vh] bg-[url(/src/images/campus-chiloe.jpg)] bg-cover bg-no-repeat"/>
+</section>

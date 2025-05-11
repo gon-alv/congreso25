@@ -3,9 +3,11 @@
 
 :root {
   /*Aqui se pueden modificar los colores generales de la página*/
-  --primary-color: #a400e2;/*color principal*/
+  --primary-color: #a400e2;
+  --primary-hover-color: #bc4de4;
+  --active-color: #6d01a0;/*color principal*/
   --main-bg-color: #888;/*color del fondo*/
-  --accent-color: #2c31d0;/*color secundario o de enfasis*/
+  --accent-color: #ffffff;/*color secundario o de enfasis*/
   --bar-text: #ffffff;/*color del texto en barras/menues*/
   --active-text: #e1baef;/*color del texto cuando se activa, eg.: en botones*/
 }

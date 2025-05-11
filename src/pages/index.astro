@@ -1,48 +1,30 @@
 ---
 import Hero from '../components/Hero.astro';
-import BlogPost from '../layouts/BlogPost.astro';
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="Bienvenida a ENSUCh 2025" description="ENSUCh 2025">
-	<!-- <Hero /> -->
-	<Hero />
-	<!--<Welcome />-->
-	<main>
-	<div class="text-justify m-5 transparent rounded-lg p-4">
-		<h1>Bienvenida a ENSUCh 2025</h1>
-		<p>¡Estamos emocionados de tenerte aquí!</p>
-		<p>ENSUCh es un evento que reúne a estudiantes, profesionales y entusiastas de la tecnología para aprender, compartir y colaborar en proyectos innovadores.</p>
-		<p>¡Esperamos que disfrutes de tu experiencia!</p>
-	</div>
+<Layout title="XIX Encuen	tro Nacional de Secretarias del CRUCh">
+	<Hero class="min-h-[50vh] w-full inset-shadow-md" />
+	<main class="flex w-[80%] items-center justify-center ml-[10%] border-0 shadow-lg bg-gray-50 ">
+		<div class="px-[max(5vw,30px)] py-10">
+			<h1 class="text-3xl font-bold">
+				Mensaje de bienvenida
+			</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum placerat quam sed pulvinar. Nullam ultrices convallis massa, ac viverra augue elementum et. Duis tortor tortor, elementum vitae aliquet et, gravida at eros. Duis porta sit amet dui id aliquet. Aliquam lobortis luctus diam ac gravida. Nulla vel vestibulum massa. Aliquam est mi, aliquam quis venenatis at, feugiat a tortor. Aliquam dui diam, cursus nec ipsum in, rhoncus mollis dui. Sed quis urna non orci vehicula pretium. Aenean finibus nisi vel ornare rhoncus. Donec nec ex commodo, varius nulla non, cursus erat. Quisque pharetra, felis ac congue auctor, nisi leo consequat orci, ut ultricies sapien arcu sit amet lectus. Integer metus sapien, porttitor congue venenatis ut, accumsan condimentum nunc.</p>
+			<p>
+			Sed sagittis tincidunt risus. Fusce varius nisi ac leo congue, a dapibus nisl commodo. Mauris semper ultrices neque tempor dapibus. Sed ac ipsum rhoncus, elementum diam ut, convallis libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eget lectus at tortor fermentum aliquam in eget nisi. Curabitur leo nibh, commodo vitae felis eget, fringilla malesuada leo. 
+			</p>
+			<p> Integer mi nunc, luctus non erat sed, aliquam vulputate ligula. Proin at vulputate libero. Suspendisse congue elit augue, vitae pretium quam lacinia ornare. Suspendisse pharetra ligula vitae diam porta lobortis. Maecenas eu ante enim. Proin sem ante, malesuada at tincidunt sit amet, dignissim eu odio. Aenean laoreet turpis feugiat, ultricies metus sed, tincidunt odio. Sed facilisis mi quis feugiat convallis. Nunc magna sem, condimentum sit amet vestibulum a, finibus in sem.</p>
+			<p>Maecenas at placerat eros. Suspendisse sollicitudin ligula id volutpat consequat. Donec in augue vel nisi sodales faucibus. Duis quis malesuada purus. Cras non nunc lacinia, eleifend sem blandit, vehicula lorem. <b>Nulla venenatis varius </b>quam non tempor. In ac neque cursus erat vulputate aliquam. Phasellus sed ex sed arcu dignissim pellentesque sed eu justo. Vivamus eget ornare justo. Ut eget congue nisl. Suspendisse eu ultrices lectus. Morbi at quam ullamcorper, rhoncus est eget, hendrerit mi.</p>
+		</div>
 	</main>
-	<BlogPost title="Primer post">
-		<p>¡Hola a todos! Este es nuestro primer post en el blog de ENSUCh 2025. Aquí compartiremos noticias, actualizaciones y recursos relacionados con el evento. ¡Mantente atento!</p>
-		<p class="dateContainer">
-			<span class="date">30 de Marzo de 2025, 14:18 hrs.</span>
-		</p>
-	</BlogPost>
 </Layout>
 
 <style>
-	main {
-		background-color: rgba(230, 230, 230, 0.568);
-		border-radius: 20px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		margin: 150px;
-	}
-	h1{
-		text-align: center;
-		text-color: rgba(0, 0, 0, 0.8);
-		font-size: 2rem;
-		margin-bottom: 1rem;
-		font-weight: bold;
-	}
-	.dateContainer {
-		color: rgba(68, 68, 68, 0.5);
-		margin-top: .7rem;
-		font-style: italic;
-
+	p {
+		margin-block: 1em;
+		margin-block: 1lh;
 	}
 </style>
