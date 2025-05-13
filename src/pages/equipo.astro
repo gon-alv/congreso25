@@ -10,45 +10,47 @@ const { Content } = await render(equipo);
 <Layout title="Equipo organizador">
   <div class="h-full w-full bg-[var(--main-bg-color)]">
     <div class="flex flex-col gap-8 w-[85%] items-center justify-center mt-[8%] mb-[5%] mx-[7.5%] border-0 rounded-lg py-6 shadow-lg bg-gray-50">
-      {
-        equipo.map( persona => {
-          const { slug, data } = persona
-          const { nombre, cargo, foto, correo, reversed } = data
-          if (!reversed){
+      {await Promise.all(
+        equipo.map(async (persona) => {
+          const { Content } = await render(persona);
+          const { nombre, cargo, foto, correo, reversed } = persona.data;
+          if (!reversed) {
             return (
               <article class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl">
-              <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={`/src/images/equipo/${foto}`} alt={`${nombre}`}>
-              <div class="flex flex-col justify-between p-4 leading-normal">
-                <h2 class="mb-2 text-2xl font-bold tracking-tight">
-                  {nombre}
-                </h2>
-                <h3 class="mb-2 text-xs font-bold tracking-tight">
-                  {cargo}
-                </h3>
-                <p class="text-xs text-gray-700">
-                  Pellentesque sagittis, turpis id finibus maximus, quam felis luctus risus, sit amet pellentesque lacus elit sed ante. Proin sapien quam, facilisis sit amet est at, aliquam sodales diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla feugiat mi eu diam consequat sodales. Duis id metus vitae justo tincidunt elementum bibendum in elit. Nunc ultricies porttitor arcu, non interdum lacus finibus ac. Quisque lacinia magna nec turpis vulputate porttitor. Vivamus quis purus ut tortor maximus porta in id nisi. Morbi at nunc eget ex vulputate auctor sit amet at augue.
-
-                </p>
-              </div>
+                <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={`/src/images/equipo/${foto}`} alt={`${nombre}`}>
+                  <div class="flex flex-col justify-between p-4 leading-normal">
+                  <h2 class="mb-2 text-2xl font-bold tracking-tight">
+                    {nombre}
+                  </h2>
+                  <h3 class="mb-2 text-xs font-bold tracking-tight">
+                    {cargo}
+                    </h3>
+                    <div class="text-xs text-gray-700">
+                        <Content/>
+                      </div>
+                    </div>
               </article>
-            )
-          } else { return(
-          <article class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl">
-              <div class="flex flex-col justify-between p-4 leading-normal">
-                <h2 class="mb-2 text-2xl font-bold tracking-tight">
-                  {nombre}
-                </h2>
-                <h3 class="mb-2 text-xs font-bold tracking-tight">
-                  {cargo}
-                </h3>
-                <p class="text-xs text-gray-700">
-                  Pellentesque sagittis, turpis id finibus maximus, quam felis luctus risus, sit amet pellentesque lacus elit sed ante. Proin sapien quam, facilisis sit amet est at, aliquam sodales diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla feugiat mi eu diam consequat sodales. Duis id metus vitae justo tincidunt elementum bibendum in elit. Nunc ultricies porttitor arcu, non interdum lacus finibus ac. Quisque lacinia magna nec turpis vulputate porttitor. Vivamus quis purus ut tortor maximus porta in id nisi. Morbi at nunc eget ex vulputate auctor sit amet at augue.
-                </p>
-              </div>
-              <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={`/src/images/equipo/${foto}`} alt={`${nombre}`}>
-          </article>
-          )}
-        }
+            
+            );
+          } else {
+            return (
+                <article class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl">
+                    <div class="flex flex-col justify-between p-4 leading-normal">
+                      <h2 class="mb-2 text-2xl font-bold tracking-tight">
+                        {nombre}
+                      </h2>
+                      <h3 class="mb-2 text-xs font-bold tracking-tight">
+                        {cargo}
+                      </h3>
+                      <div class="text-xs text-gray-700">
+                          <Content />
+                      </div>
+                    </div>
+                    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={`/src/images/equipo/${foto}`} alt={`${nombre}`}>
+                </article>
+            );
+          }
+        })
       )}
     </div>
   </div>
