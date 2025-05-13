@@ -3,7 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import '../styles/transitions.css';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -20,12 +20,14 @@ const { title } = Astro.props as Props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 
-	<body>
+	<body class="flex flex-col min-h-screen">
 		<Header />
-		<slot />
+		<main class=" flex-1 bg-[var(--main-bg-color)]">
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>

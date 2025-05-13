@@ -6,8 +6,14 @@
   --primary-color: #a400e2;
   --primary-hover-color: #bc4de4;
   --active-color: #6d01a0;/*color principal*/
-  --main-bg-color: #888;/*color del fondo*/
+  --main-bg-color: #e3dae6;/*color del fondo*/
+  --item-bg-color: #fafafa;
   --accent-color: #ffffff;/*color secundario o de enfasis*/
   --bar-text: #ffffff;/*color del texto en barras/menues*/
   --active-text: #e1baef;/*color del texto cuando se activa, eg.: en botones*/
+}
+
+p {
+  margin-block: 1em;
+  margin-block: 1lh;
 }
