@@ -1,7 +1,472 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
----
-<Layout title="Que se puede hacer en Castro?">
+// attractions.astro
+import Layout from "../layouts/Layout.astro"; // Ajusta la ruta según tu estructura
+import AttractionCard from "../components/AttractionCard.astro";
 
+// Datos de ejemplo - esto podría venir de un CMS, API o archivo JSON
+const attractions = [
+  {
+    id: "cerro-catedral",
+    title: "Cerro Catedral",
+    description:
+      "Impresionante mirador con vistas panorámicas de la ciudad y el lago. Perfecto para senderismo y fotografía de paisajes naturales.",
+    mainImage:
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+    location: "Bariloche, Río Negro, Argentina",
+    contact: "info@cerrocatedral.com",
+    phone: "+54 294 440-5000",
+    website: "https://catedralaltatours.com",
+    detailedDescription: `El Cerro Catedral es uno de los destinos más emblemáticos de la región, ofreciendo experiencias únicas tanto en verano como en invierno.
+
+Durante el verano, se convierte en un paraíso para los amantes del senderismo y la naturaleza, con múltiples senderos que llevan a miradores espectaculares. Las vistas panorámicas desde la cima abarcan toda la extensión del lago Nahuel Huapi y las montañas circundantes.
+
+En invierno, se transforma en uno de los centros de esquí más importantes de Sudamérica, con pistas para todos los niveles y modernas instalaciones. El telecabina funciona durante todo el año, permitiendo el acceso fácil a las alturas.`,
+    gallery: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1464822759844-d150baec93d1?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&sat=-20",
+      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&h=400&fit=crop",
+    ],
+    category: "Aventura",
+  },
+  {
+    id: "isla-victoria",
+    title: "Isla Victoria",
+    description:
+      "Isla paradisíaca en el corazón del lago Nahuel Huapi. Bosques nativos, playas vírgenes y rica historia cultural.",
+    mainImage:
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&hue=60",
+    location: "Lago Nahuel Huapi, Neuquén",
+    contact: "reservas@islamarina.com",
+    phone: "+54 294 442-3456",
+    detailedDescription: `La Isla Victoria es un verdadero tesoro natural ubicado en el lago Nahuel Huapi. Con sus 31 kilómetros cuadrados, la isla alberga una increíble diversidad de flora y fauna autóctona.
+
+Los visitantes pueden recorrer sus senderos interpretativos, que serpentean entre bosques de arrayanes, coihues y lengas. Las playas de arena fina y aguas cristalinas son ideales para relajarse y disfrutar del paisaje.
+
+La isla también cuenta con importante valor histórico y arqueológico, con sitios que evidencian la presencia de pueblos originarios. El centro de interpretación brinda información detallada sobre la ecología local y la historia de la región.`,
+    gallery: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&hue=60",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&hue=120",
+    ],
+    category: "Naturaleza",
+  },
+  {
+    id: "bosque-arrayanes",
+    title: "Bosque de Arrayanes",
+    description:
+      "Único bosque de arrayanes del mundo. Árboles centenarios con corteza canela y formas caprichosas que crean un ambiente mágico.",
+    mainImage:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop&sat=20",
+    location: "Península de Quetrihué, Villa La Angostura",
+    contact: "parques@apn.gob.ar",
+    phone: "+54 294 449-4005",
+    website: "https://parquesnacionales.gob.ar",
+    detailedDescription: `El Bosque de Arrayanes es una de las maravillas naturales más singulares de Argentina. Este bosque puro de arrayanes es prácticamente único en el mundo, donde estos árboles nativos crecen formando un bosque denso y mágico.
+
+Los arrayanes se caracterizan por su corteza lisa de color canela que se renueva constantemente, creando patrones únicos en cada árbol. Algunos ejemplares superan los 300 años de edad y alcanzan alturas de hasta 15 metros.
+
+El sendero interpretativo de 12 kilómetros permite recorrer este ecosistema único, observando también la fauna asociada como el pudú, el huemul y más de 100 especies de aves. La experiencia se completa con vistas espectaculares del lago Nahuel Huapi.`,
+    gallery: [
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop&sat=20",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop&sat=30",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&hue=20",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop&brightness=-10",
+    ],
+    category: "Naturaleza",
+  },
+  {
+    id: "circuito-chico",
+    title: "Circuito Chico",
+    description:
+      "Recorrido panorámico clásico que conecta los paisajes más emblemáticos. Lagos, montañas, bosques y miradores espectaculares.",
+    mainImage:
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&contrast=20",
+    location: "San Carlos de Bariloche, Río Negro",
+    contact: "turismo@bariloche.gov.ar",
+    phone: "+54 294 442-9850",
+    detailedDescription: `El Circuito Chico es el recorrido turístico más famoso de Bariloche, un trayecto de 60 kilómetros que puede realizarse en auto, bicicleta o excursiones organizadas.
+
+El circuito incluye paradas en los miradores más espectaculares de la región: Punto Panorámico, Cerro Campanario, Playa Bonita, y el famoso Hotel Llao Llao. Cada punto ofrece perspectivas únicas del lago Nahuel Huapi y las montañas circundantes.
+
+Durante el recorrido se pueden visitar centros de artesanías locales, degustar productos regionales como chocolates y cervezas artesanales, y disfrutar de actividades como kayak, pesca y senderismo. Es ideal para dedicarle un día completo y descubrir la esencia de la Patagonia andina.`,
+    gallery: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&contrast=20",
+      "https://images.unsplash.com/photo-1464822759844-d150baec93d1?w=600&h=400&fit=crop&contrast=10",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&hue=40",
+    ],
+    category: "Recorridos",
+  },
+  {
+    id: "centro-civico",
+    title: "Centro Cívico",
+    description:
+      "Corazón histórico y cultural de la ciudad. Arquitectura alpina, artesanías locales, gastronomía regional y vida cultural vibrante.",
+    mainImage:
+      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop",
+    location: "Centro de San Carlos de Bariloche",
+    contact: "centrocivico@bariloche.gov.ar",
+    phone: "+54 294 442-6784",
+    detailedDescription: `El Centro Cívico de Bariloche es el núcleo histórico y cultural de la ciudad, declarado Monumento Histórico Nacional. Su arquitectura de estilo alpino, diseñada por Ernesto de Estrada en la década de 1940, refleja la influencia europea en la región.
+
+El complejo incluye la Intendencia Municipal, el Museo de la Patagonia, la Biblioteca Sarmiento y diversos espacios culturales. Las plazas y explanadas son escenario de eventos culturales, ferias artesanales y celebraciones comunitarias durante todo el año.
+
+Desde aquí se pueden realizar caminatas por el casco histórico, visitar las chocolaterías tradicionales, explorar tiendas de artesanías locales y disfrutar de la gastronomía patagónica en restaurantes con vista al lago. Es el punto de partida ideal para conocer la cultura local.`,
+    gallery: [
+      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&sepia=30",
+      "https://images.unsplash.com/photo-1464822759844-d150baec93d1?w=600&h=400&fit=crop&warmth=20",
+      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=400&fit=crop&contrast=-10",
+    ],
+    category: "Cultural",
+  },
+  {
+    id: "lago-gutierrez",
+    title: "Lago Gutiérrez",
+    description:
+      "Lago de aguas cálidas ideal para deportes acuáticos. Playas de arena, bosques circundantes y ambiente tranquilo para relajarse.",
+    mainImage:
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&blue=20",
+    location: "Villa Los Coihues, Bariloche",
+    contact: "info@lagogutierrez.com",
+    phone: "+54 294 446-1234",
+    detailedDescription: `El Lago Gutiérrez es conocido por tener las aguas más cálidas de la región, alcanzando temperaturas ideales para el baño durante el verano. Su ubicación privilegiada, rodeado de bosques nativos y montañas, lo convierte en un destino perfecto para quienes buscan tranquilidad y contacto con la naturaleza.
+
+Las playas de arena fina son ideales para familias con niños, mientras que las aguas calmas permiten la práctica de kayak, stand-up paddle y pesca deportiva. Los bosques circundantes ofrecen senderos para caminatas y ciclismo de montaña.
+
+La zona cuenta con campings, cabañas y hosterías que permiten disfrutar de varios días en este paraíso natural. Durante el otoño, los colores de los bosques crean un espectáculo visual incomparable que atrae a fotógrafos y amantes de la naturaleza de todo el mundo.`,
+    gallery: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&blue=20",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop&blue=10",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop&warmth=10",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&sat=-30",
+    ],
+    category: "Deportes",
+  },
+];
+
+const title = "Atracciones Turísticas";
+const description = "Descubre los destinos más fascinantes de nuestra región";
+---
+
+<Layout title={title}>
+  <main
+    class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50"
+  >
+    <!-- Hero Section -->
+    <section
+      class="relative overflow-hidden bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 text-white"
+    >
+      <div class="absolute inset-0 bg-black opacity-20"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Descubre Lugares
+            <span
+              class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
+            >
+              Extraordinarios
+            </span>
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed"
+          >
+            Explora las atracciones más fascinantes de nuestra región, desde
+            paisajes naturales hasta experiencias culturales únicas que te
+            conectarán con la esencia del lugar.
+          </p>
+        </div>
+
+        <!-- Decorative elements -->
+        <div
+          class="absolute top-20 left-10 w-20 h-20 bg-blue-400 rounded-full opacity-20 animate-pulse"
+        >
+        </div>
+        <div
+          class="absolute bottom-20 right-10 w-32 h-32 bg-indigo-400 rounded-full opacity-20 animate-pulse delay-75"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/4 w-16 h-16 bg-yellow-400 rounded-full opacity-30 animate-bounce"
+        >
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros de categorías -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button
+          class="filter-btn active bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5"
+          data-filter="all"
+        >
+          Todas las Atracciones
+        </button>
+        <button
+          class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full font-medium border border-gray-200 transition-all duration-200 hover:border-blue-300 hover:text-blue-600 hover:shadow-md transform hover:-translate-y-0.5"
+          data-filter="naturaleza"
+        >
+          Naturaleza
+        </button>
+        <button
+          class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full font-medium border border-gray-200 transition-all duration-200 hover:border-blue-300 hover:text-blue-600 hover:shadow-md transform hover:-translate-y-0.5"
+          data-filter="aventura"
+        >
+          Aventura
+        </button>
+        <button
+          class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full font-medium border border-gray-200 transition-all duration-200 hover:border-blue-300 hover:text-blue-600 hover:shadow-md transform hover:-translate-y-0.5"
+          data-filter="cultural"
+        >
+          Cultural
+        </button>
+        <button
+          class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full font-medium border border-gray-200 transition-all duration-200 hover:border-blue-300 hover:text-blue-600 hover:shadow-md transform hover:-translate-y-0.5"
+          data-filter="deportes"
+        >
+          Deportes
+        </button>
+        <button
+          class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full font-medium border border-gray-200 transition-all duration-200 hover:border-blue-300 hover:text-blue-600 hover:shadow-md transform hover:-translate-y-0.5"
+          data-filter="recorridos"
+        >
+          Recorridos
+        </button>
+      </div>
+    </section>
+
+    <!-- Grid de Atracciones -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div
+        id="attractions-grid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {
+          attractions.map((attraction) => (
+            <div
+              class="attraction-item"
+              data-category={attraction.category?.toLowerCase()}
+            >
+              <AttractionCard {...attraction} />
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div id="no-results" class="hidden text-center py-20">
+        <div class="text-gray-400 mb-4">
+          <svg
+            class="w-24 h-24 mx-auto mb-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.009-5.824-2.562M15 3.863A7.963 7.963 0 0012 3c-2.34 0-4.29 1.009-5.824 2.562"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-600 mb-2">
+          No se encontraron atracciones
+        </h3>
+        <p class="text-gray-500">Intenta con una categoría diferente</p>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 text-white"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            ¿Listo para tu próxima aventura?
+          </h2>
+          <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Contáctanos para planificar tu experiencia perfecta y descubrir
+            todos los secretos que estos lugares tienen para ofrecerte.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contacto"
+              class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold rounded-lg hover:from-yellow-300 hover:to-orange-400 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-xl"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Planifica tu Viaje
+            </a>
+            <a
+              href="/tours"
+              class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-blue-700 transition-all duration-200 transform hover:-translate-y-1"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                ></path>
+              </svg>
+              Ver Tours Disponibles
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<script>
+  // Funcionalidad de filtros
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const attractionItems = document.querySelectorAll(".attraction-item");
+    const noResults = document.getElementById("no-results");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const filter = this.dataset.filter;
+
+        // Actualizar botones activos
+        filterButtons.forEach((btn) => {
+          btn.classList.remove(
+            "active",
+            "bg-gradient-to-r",
+            "from-blue-600",
+            "to-blue-700",
+            "text-white"
+          );
+          btn.classList.add(
+            "bg-white",
+            "text-gray-700",
+            "border",
+            "border-gray-200"
+          );
+        });
+
+        this.classList.remove(
+          "bg-white",
+          "text-gray-700",
+          "border",
+          "border-gray-200"
+        );
+        this.classList.add(
+          "active",
+          "bg-gradient-to-r",
+          "from-blue-600",
+          "to-blue-700",
+          "text-white"
+        );
+
+        // Filtrar atracciones
+        let visibleItems = 0;
+        attractionItems.forEach((item) => {
+          const category = item.dataset.category;
+
+          if (filter === "all" || category === filter) {
+            item.style.display = "block";
+            item.classList.add("animate-fade-in");
+            visibleItems++;
+          } else {
+            item.style.display = "none";
+            item.classList.remove("animate-fade-in");
+          }
+        });
+
+        // Mostrar mensaje si no hay resultados
+        if (visibleItems === 0) {
+          noResults.classList.remove("hidden");
+        } else {
+          noResults.classList.add("hidden");
+        }
+      });
+    });
+
+    // Animación suave para las tarjetas
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-slide-up");
+        }
+      });
+    }, observerOptions);
+
+    attractionItems.forEach((item) => {
+      observer.observe(item);
+    });
+  });
+</script>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+
+  /* Smooth transitions */
+  .attraction-item {
+    transition: all 0.3s ease;
+  }
+
+  /* Filter button hover effects */
+  .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .filter-btn.active:hover {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+</style>
