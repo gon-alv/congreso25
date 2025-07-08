@@ -1,4 +1,5 @@
 ---
+import Gallery from "../../components/Gallery.astro";
 import Layout from "../../layouts/Layout.astro";
 import "../../styles/global.css";
 ---
@@ -196,24 +197,9 @@ import "../../styles/global.css";
         dedicación y preocupándonos de cada detalle para hacer del XIX Encuentro
         una experiencia inolvidable.
       </p>
-      <!-- imagenes -->
-      <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
-        <div class="flex-1 rounded-4xl">
-          <img
-            src="/images/universidad/santiago.jpg"
-            alt="Frontis campus República"
-            class="w-full h-64 object-cover object-center rounded-xl"
-          />
-          <p></p>
-        </div>
-        <div class="flex-1 rounded-4xl">
-          <img
-            src="/images/universidad/santiago2.jpg"
-            alt="Campus República"
-            class="w-full h-64 object-cover object-center rounded-xl"
-          />
-          <p></p>
-        </div>
+      <h2 class="pt-10 pb-5">Imágenes de algunos de nuestros congresos</h2>
+      <div class="pb-15">
+        <Gallery />
       </div>
     </div>
   </div>

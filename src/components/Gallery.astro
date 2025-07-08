@@ -1,0 +1,62 @@
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="/images/congresos/2001.jpg" alt="" />
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/congresos/2002.jpg" alt="" />
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/congresos/2012.png" alt="" />
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/congresos/2017.jpg" alt="" />
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/congresos/2024.png" alt="" />
+    </div>
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-scrollbar"></div>
+</div>
+<script>
+  import Swiper from "swiper";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import { Navigation } from "swiper/modules";
+
+  const swiper = new Swiper(".swiper", {
+    modules: [Navigation],
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 40,
+    navigation: {
+      prevEl: ".swiper-button-prev",
+      nextEl: ".swiper-button-next",
+    },
+  });
+</script>
+<style>
+  .swiper-slide {
+    height: 300px;
+    width: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: white;
+    background-color: rgba(240, 198, 240, 0.507);
+    right: 10px;
+    padding: 30px;
+    color: var(--primary-color) !important;
+    fill: rgb(226, 104, 231) !important;
+    stroke: rgb(193, 83, 182) !important;
+  }
+</style>
