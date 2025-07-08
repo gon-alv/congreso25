@@ -2,11 +2,14 @@
 import "../styles/global.css";
 
 export interface Props {
-    class?: string;
+  class?: string;
 }
 const { class: className } = Astro.props;
 ---
 
 <section class={className}>
-    <div class="w-full h-[75vh] bg-[url(/src/images/campus-chiloe.jpg)] bg-cover bg-no-repeat"/>
+  <div
+    class="w-full h-[75vh] bg-[url(/images/campus-chiloe.jpg)] bg-cover bg-no-repeat"
+  >
+  </div>
 </section>

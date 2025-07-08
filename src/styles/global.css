@@ -42,5 +42,12 @@ h3 {
   padding-top: .5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  vertical-aligt: left;
+  vertical-align: left;
+}
+.filter-main{
+    filter: invert(18%) sepia(72%) saturate(2229%) hue-rotate(269deg) brightness(90%) contrast(89%);
+
+}
+.filter-main-hover{
+    filter: invert(75%) sepia(43%) saturate(1882%) hue-rotate(201deg) brightness(110%) contrast(97%);
 }
