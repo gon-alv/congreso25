@@ -1,0 +1,115 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+---
+
+<Layout title="Sobre la ULagos">
+  <div
+    class="relative w-[80%] pt-16 items-center justify-center ml-[10%] mb-6 border-0 shadow-lg bg-[var(--item-bg-color)] rounded-b-xl"
+  >
+    <div class="h-5"></div>
+    <!-- ESPACIO PARA NAVBAR ENTRE DISTINTAS PAGINAS 
+    <h1>Universidad de Los Lagos</h1>-->
+    <nav class="bg-white shadow">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center items-center">
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a
+            href="/historia"
+            class="text-md pb-2 font-bold text-[var(--primary-color)] hover:text-[var(--primary-hover-color)]"
+          >
+            ULagos
+          </a>
+          <a
+            href="/historia/campus-osorno"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Campus Osorno
+          </a>
+          <a
+            href="/historia/campus-chinquihue"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Puerto Montt
+          </a>
+          <a
+            href="/historia/sede-chiloe"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Chiloé
+          </a>
+          <a
+            href="/historia/sede-santiago"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Santiago
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!--
+    <div class="w-[75%] h-[500px] mx-auto rounded-b-2xl overflow-hidden">
+      <img
+        src="/src/images/universidad/osorno-nombre.JPG"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>-->
+    <div
+      class="w-[90%] max-w-6xl mx-auto h-[300px] overflow-hidden rounded-b-2xl"
+    >
+      <img
+        src="/src/images/universidad/osorno-nombre.JPG"
+        alt="Universidad de Los Lagos - Osorno"
+        class="w-full h-full object-cover object-bottom"
+      />
+    </div>
+
+    <div class="w-[75%] ml-[12.5%] pt-5 pb-15">
+      <h3>Origen y trayectoria institucional</h3>
+      <p>
+        La Universidad de Los Lagos es una institución estatal y regional
+        fundada en agosto de 1993. Entre 1981 y 1993 fue uno de los cuatro
+        Institutos Profesionales Estatales y, antes de ello, sede de la
+        Universidad de Chile y de la Universidad Técnica del Estado. Su tránsito
+        de Instituto Profesional a su actual estatus de Universidad, obedece al
+        desarrollo de un proyecto universitario presentado al Gobierno y al
+        Congreso Nacional, etapa que contó con una amplia participación de la
+        comunidad universitaria y el apoyo de diversos actores de la región.
+        Este proceso concluyó con la creación de la Universidad de Los Lagos en
+        agosto de 1993.
+      </p>
+      <p class="pb-15">
+        La Universidad de Los Lagos es una institución pública, con más de 30
+        años de presencia en la Región. Con vocación territorial, inclusiva y
+        comprometida con la equidad, hoy se proyecta como una Universidad
+        compleja, dedicada a la investigación, con un modelo educativo centrado
+        en la excelencia y el aprendizaje transformador. Actualmente, está
+        acreditada por 5 años en nivel avanzado en las áreas de Gestión
+        Institucional, Docencia de Pregrado, Vinculación con el Medio e
+        Investigación.
+      </p>
+      <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/osorno.jpg"
+            alt="Campus Osorno"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Sede Central de la Universidad de Los Lagos, Campus Osorno.
+          </p>
+        </div>
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/chinquihue.jpg"
+            alt="Campus Chinquihue"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Campus Chinquihue, Universidad de Los Lagos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+<style></style>

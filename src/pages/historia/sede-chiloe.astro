@@ -1,0 +1,131 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+---
+
+<Layout title="Sobre la ULagos">
+  <div
+    class="relative w-[80%] pt-16 items-center justify-center ml-[10%] mb-6 border-0 shadow-lg bg-[var(--item-bg-color)] rounded-b-xl"
+  >
+    <div class="h-5"></div>
+    <!-- ESPACIO PARA NAVBAR ENTRE DISTINTAS PAGINAS 
+    <h1>Universidad de Los Lagos</h1>-->
+    <nav class="bg-white shadow">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center items-center">
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a
+            href="/historia"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            ULagos
+          </a>
+          <a
+            href="/historia/campus-osorno"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Campus Osorno
+          </a>
+          <a
+            href="/historia/campus-chinquihue"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Puerto Montt
+          </a>
+          <a
+            href="/historia/sede-chiloe"
+            class="text-md pb-2 font-bold text-[var(--primary-color)] hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Chiloé
+          </a>
+          <a
+            href="/historia/sede-santiago"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Santiago
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="w-[75%] ml-[12.5%] pt-5 pb-15">
+      <h3>Sede Chiloé</h3>
+      <p class="pb-5">
+        La Universidad de Los Lagos asume desde mediados de los años 90´ el
+        desafío de brindar educación superior en el archipiélago de Chiloé,
+        labor que ha desarrollado de manera sistemática e ininterrumpida. En un
+        comienzo, el objetivo era garantizar el acceso a la educación superior
+        de carácter pública a todas y todos aquellos que por diversos motivos no
+        podían sustentar los costos, no sólo económicos, de estudiar fuera del
+        archipiélago. Con este propósito, se implementaron una serie de carreras
+        del Nivel Técnico Universitario. Este proceso ha presentado una
+        progresiva y notable consolidación, especialmente en los últimos años,
+        dado el fortalecimiento que implicó la implementación de los Proyectos
+        de Mejoramiento Institucional (PMI) “Chiloé Superior” y “Consolidación
+        de la Formación Técnica”.
+      </p>
+
+      <div class="flex-1 rounded-4xl">
+        <img
+          src="/src/images/universidad/castro-luces-2-crop.jpeg"
+          class="w-full h-82 object-cover object-center rounded-xl"
+        />
+        <p>
+          Todo este proceso se ve absolutamente potenciado por la construcción
+          de una moderna infraestructura que contempla más de 5.700 m2 en el
+          sector sur de la ciudad de Castro. Un proyecto universitario insular
+          respaldado por más de 6.500 millones de pesos de inversión, que ya se
+          encuentra a disposición de la institución.
+        </p>
+        <p>
+          En efecto, hoy, el desafío de la Universidad de Los Lagos en Chiloé es
+          consolidar un proyecto universitario de trascendencia regional y
+          nacional, conectando las características propias del territorio
+          insular con la calidad académica y el desarrollo disciplinar propio
+          del conocimiento científico, fortaleciendo las actuales carreras de
+          pregrado -técnicas y profesionales- que se imparten en la sede.
+          Asimismo, la sede se propone potenciar las actividades de vinculación
+          con el medio, la formación continua, y acoger la capacidad de
+          investigación, innovación y transferencia tecnológica que desarrolla
+          la universidad en la Región de Los Lagos.
+        </p>
+        <!-- imagenes -->
+        <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+          <div class="flex-1 rounded-4xl">
+            <img
+              src="/src/images/universidad/salon-castro.jpeg"
+              alt="Salón de clases en Sede Castro"
+              class="w-full h-64 object-cover object-center rounded-xl"
+            />
+            <p></p>
+          </div>
+          <div class="flex-1 rounded-4xl">
+            <img
+              src="/src/images/universidad/salon2-castro.jpeg"
+              alt="Salón de clases en Sede Castro"
+              class="w-full h-64 object-cover object-center rounded-xl"
+            />
+            <p></p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+          <div class="flex-1 rounded-4xl">
+            <img
+              src="/src/images/universidad/castro.jpg"
+              alt="Frontis Sede Castro"
+              class="w-full h-64 object-cover object-center rounded-xl"
+            />
+            <p></p>
+          </div>
+          <div class="flex-1 rounded-4xl">
+            <img
+              src="/src/images/universidad/castro-aerea.jpg"
+              alt="Vista aérea de Sede Castro"
+              class="w-full h-64 object-cover object-center rounded-xl"
+            />
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,107 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+---
+
+<Layout title="Sobre la ULagos">
+  <div
+    class="relative w-[80%] pt-16 items-center justify-center ml-[10%] mb-6 border-0 shadow-lg bg-[var(--item-bg-color)] rounded-b-xl"
+  >
+    <div class="h-5"></div>
+    <!-- ESPACIO PARA NAVBAR ENTRE DISTINTAS PAGINAS 
+    <h1>Universidad de Los Lagos</h1>-->
+    <nav class="bg-white shadow">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center items-center">
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a
+            href="/historia"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            ULagos
+          </a>
+          <a
+            href="/historia/campus-osorno"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Campus Osorno
+          </a>
+          <a
+            href="/historia/campus-chinquihue"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Puerto Montt
+          </a>
+          <a
+            href="/historia/sede-chiloe"
+            class="text-md pb-2 font-bold text-[var(--primary-color)] hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Chiloé
+          </a>
+          <a
+            href="/historia/sede-santiago"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Santiago
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="w-[75%] ml-[12.5%] pt-5 pb-15">
+      <h3>Sede Santiago</h3>
+      <p>
+        El edificio República N° 517, actual Sede Santiago de la Universidad de
+        Los Lagos, se origina en un predio adquirido en el año 1908 por el
+        Estado, cuyo objetivo era construir una escuela pública. Sin embargo, la
+        llamada “Escuela de Av. República” nunca se materializó como tal. Al
+        finalizar su construcción -en 1918 – la Universidad de Chile comienza a
+        realizar trabajos de habilitación para instalar allí su Escuela de
+        Arquitectura. Durante ese periodo, en esta Escuela se formaron
+        importantes personajes de la arquitectura nacional, como Juan Martínez
+        Gutiérrez, Roberto Dávila Carson, entre otros. La Escuela de
+        Arquitectura permaneció en el lugar hasta 1933, año en que trasladarían
+        su sede.
+      </p>
+      <p>
+        Posteriormente, la Facultad de Comercio y Economía Industrial de la
+        Universidad de Chile, en particular con su Escuela de Economía, hizo uso
+        de este inmueble. Más tarde, durante la Dictadura – en 1978 – el
+        conjunto sería desalojado para instalar allí el Cuartel Central de la
+        CNI. Fue una etapa convulsa no sólo para quienes padecieron tortura en
+        ese lugar, sino también para su entorno, transformando el barrio en un
+        área de control y vigilancia por parte de los agentes del Estado hasta
+        el retorno a la democracia, cuando es abandonado.
+      </p>
+      <p>
+        La Universidad de Los Lagos arriba a Santiago en 1993, meses después de
+        su fundación en Osorno. Tras deambular por distintas locaciones, en el
+        año 2002 la Universidad adquiere el inmueble de Av. República N° 517,
+        con el objetivo de ubicar definitivamente allí su Sede Santiago. Es así
+        como paulatinamente la ULagos ha ido recuperando este emblemático
+        edificio, a través de la rehabilitación de sus dependencias y la
+        recuperación de su vocación académica, generando espacios de
+        conocimiento, difusión y reflexión que permitan proyectar la importancia
+        de la educación pública a las nuevas generaciones.
+      </p>
+      <!-- imagenes -->
+      <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/santiago.jpg"
+            alt="Frontis campus República"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p></p>
+        </div>
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/santiago2.jpg"
+            alt="Campus República"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

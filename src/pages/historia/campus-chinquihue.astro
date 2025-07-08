@@ -1,0 +1,135 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+---
+
+<Layout title="Sobre la ULagos">
+  <div
+    class="relative w-[80%] pt-16 items-center justify-center ml-[10%] mb-6 border-0 shadow-lg bg-[var(--item-bg-color)] rounded-b-xl"
+  >
+    <div class="h-5"></div>
+    <!-- ESPACIO PARA NAVBAR ENTRE DISTINTAS PAGINAS 
+    <h1>Universidad de Los Lagos</h1>-->
+    <nav class="bg-white shadow">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center items-center">
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a
+            href="/historia"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            ULagos
+          </a>
+          <a
+            href="/historia/campus-osorno"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Campus Osorno
+          </a>
+          <a
+            href="/historia/campus-chinquihue"
+            class="text-md pb-2 font-bold text-[var(--primary-color)] hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Puerto Montt
+          </a>
+          <a
+            href="/historia/sede-chiloe"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Chiloé
+          </a>
+          <a
+            href="/historia/sede-santiago"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Santiago
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="w-[75%] ml-[12.5%] pt-5 pb-15">
+      <h3>Campus Puerto Montt</h3>
+      <p class="pb-5">
+        El Campus Puerto Montt de la Universidad de Los Lagos, es heredero de la
+        ex sede de la Universidad Técnica del Estado (UTE) e inició sus
+        funciones en el año 1978. Posteriormente, el año 1981 se fusiona con el
+        Instituto Profesional de Osorno (IPO), el que adquiere el estatus de
+        Universidad en el año 1993, convirtiéndose en la única universidad
+        estatal en la ciudad de Puerto Montt.
+      </p>
+      <!--
+      <div class="flex-1 rounded-4xl">
+        <img
+          src="/src/images/universidad/logo-osorno.JPG"
+          alt="Campus Chinquihue"
+          class="w-full h-82 object-cover object-center rounded-xl"
+        />--->
+      <p>
+        El Campus Puerto Montt es dirigido por una Vicerrectoría de Campus.
+        Actualmente, cuenta con oferta de carreras y programas en todos los
+        niveles formativos. Además, en el Campus se emplaza el reconocido Centro
+        de Investigación Científica en Ambientes y Recursos Costeros (Centro
+        imar). Cabe señalar que el Campus destaca por su gran actividad en las
+        áreas de salud, ingeniería, educación y las artes, las que se
+        desarrollan con el propósito de impactar en el proceso formativo del
+        estudiantado y, además, promueven la vinculación activa con su entorno
+        relevante.
+      </p>
+      <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/chinquihue.jpg"
+            alt="Frontis Campus Chinquihue"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Frontis del Campus Chinquihue, Puerto Mont.
+          </p>
+        </div>
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/CAF.jpg"
+            alt="CAF Chinquihue"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Centro de Acondicionamiento Físico, Campus Chinquihue.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Para el cumplimiento de sus propósitos, el Campus cuenta con
+        instalaciones ubicadas en diferentes sectores de la ciudad de Puerto
+        Montt, tales como Chinquihue, donde se ubican las oficinas de la
+        Vicerrectoría de Campus; Guillermo Gallardo; Serena 77; y el Instituto
+        Tecnológico Regional. Cabe destacar que ya se encuentra en etapa de
+        diseño la construcción de nuevas instalaciones en Chinquihue, lo que
+        vendrá a fortalecer y consolidar aún más la presencia de la Universidad
+        de Los Lagos en la ciudad de Puerto Mont
+      </p>
+      <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/sede-pm-serena.jpg"
+            alt="Sede calle Serena, Puerto Montt"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Sede calle Serena, Puerto Montt
+          </p>
+        </div>
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/centro-imar.jpg"
+            alt="Centro i-mar"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Centro i~mar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,140 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/global.css";
+---
+
+<Layout title="Sobre la ULagos">
+  <div
+    class="relative w-[80%] pt-16 items-center justify-center ml-[10%] mb-6 border-0 shadow-lg bg-[var(--item-bg-color)] rounded-b-xl"
+  >
+    <div class="h-5"></div>
+    <!-- ESPACIO PARA NAVBAR ENTRE DISTINTAS PAGINAS 
+    <h1>Universidad de Los Lagos</h1>-->
+    <nav class="bg-white shadow">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center items-center">
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a
+            href="/historia"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            ULagos
+          </a>
+          <a
+            href="/historia/campus-osorno"
+            class="text-md pb-2 font-bold text-[var(--primary-color)] hover:text-[var(--primary-hover-color)]"
+          >
+            Campus Osorno
+          </a>
+          <a
+            href="/historia/campus-chinquihue"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Puerto Montt
+          </a>
+          <a
+            href="/historia/sede-chiloe"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Chiloé
+          </a>
+          <a
+            href="/historia/sede-santiago"
+            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
+          >
+            Sede Santiago
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="w-[75%] ml-[12.5%] pt-5 pb-15">
+      <h3>Campus Osorno</h3>
+      <p class="pb-5">
+        La Universidad de Los Lagos tiene su Casa Central en la ciudad de
+        Osorno, lugar donde radica la Rectoría y las Vicerrectorías Académica,
+        de Administración y Finanzas, de Planificación y Desarrollo y de
+        Investigación y Postgrado. El Campus Osorno imparte programas en todos
+        los niveles formativos (Técnico, Profesional y Postgrado). A partir esta
+        estructura central existente en Osorno, se lideran los diferentes
+        procesos del área que se despliegan al personal de los diferentes campus
+        y sedes a través de unidades de gestión que utilizan un sistema de
+        planificación y control pertinente y alineado con los objetivos y
+        criterios institucionales.
+      </p>
+      <!--
+      <div class="flex-1 rounded-4xl">
+        <img
+          src="/src/images/universidad/logo-osorno.JPG"
+          alt="Campus Chinquihue"
+          class="w-full h-82 object-cover object-center rounded-xl"
+        />--->
+      <p>
+        El Campus Osorno se distribuye territorialmente en las siguientes
+        ubicaciones: las instalaciones de Chuyaca cuentan con aproximadamente 22
+        hectáreas de terreno, considerando varios espacios de áreas verdes. Allí
+        también se desarrolla gran parte de la docencia de pregrado, por lo que
+        posee salas de clases, laboratorios, talleres, auditorios, casino,
+        oficinas para académicos y unidades administrativas. Además, en ese
+        lugar se encuentra la Biblioteca Central Pablo Neruda, y las siguientes
+        instalaciones deportivas: tres gimnasios, canchas de fútbol y futbolito,
+        pista atlética y áreas de esparcimiento estudiantil.
+      </p>
+      <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/osorno-frontis.JPG"
+            alt="Sede Central de la Universidad de Los Lagos, Campus Osorno"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Sede Central de la Universidad de Los Lagos, Campus Osorno.
+          </p>
+        </div>
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/osorno-2.jpg"
+            alt="Biblioteca Pablo Neruda"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Biblioteca Pablo Neurda.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        La Universidad cuenta también con dependencias en el centro de la ciudad
+        (calle Cochrane), las que se distribuyen en varios inmuebles, entre
+        ellos los edificios de Rectoría, de Vicerrectoría de Investigación y
+        Postgrado, la casona del Centro de investigación CEDER, y las
+        instalaciones del Área de Formación Continua. Por otro lado, en un punto
+        intermedio de las señaladas dependencias, la Universidad cuenta con un
+        inmueble patrimonial, la Casona Hollstein (Av. Hollstein N°3), en la que
+        opera la Academia de Arte y Cultura junto a la Dirección de Gestión y
+        Aseguramiento de la Calidad, entre otras unidades.
+      </p>
+      <div class="flex flex-col md:flex-row gap-6 w-[100%] mx-auto">
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/osorno.jpg"
+            alt="Policlínico de la Universidad de Los Lagos"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Policlínico de la Universidad de Los Lagos.
+          </p>
+        </div>
+        <div class="flex-1 rounded-4xl">
+          <img
+            src="/src/images/universidad/osorno-3.jpg"
+            alt="Departamento de Salud"
+            class="w-full h-64 object-cover object-center rounded-xl"
+          />
+          <p class="mt-2 text-gray-700 text-sm italic text-center">
+            Departamento de Salud.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
