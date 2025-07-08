@@ -3,7 +3,7 @@ direccion: Chacabuco 202
 telefono: +56 652 632302
 email: reservas@hoteldecastro.cl
 web: https://www.hoteldecastro.cl/
-imagen: src/images/hoteles/hotel-de-castro.jpg
+imagen: /images/hoteles/hotel-de-castro.jpg
 redes:
   facebook: https://facebook.com/HotelDeCastro/
   instagram: https://instagram.com/HotelDeCastro/

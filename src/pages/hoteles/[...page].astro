@@ -1,0 +1,154 @@
+---
+// src/pages/hoteles/[...page].astro
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import HotelCard from "../../components/HotelCard.astro";
+
+export async function getStaticPaths({ paginate }) {
+  // Obtener todos los hoteles desde la colección
+  const allHotels = await getCollection("hoteles");
+
+  // Debug: mostrar cuántos hoteles hay
+  console.log(`Total hoteles encontrados: ${allHotels.length}`);
+
+  // Si no hay hoteles, crear algunos de ejemplo
+  if (allHotels.length === 0) {
+    console.warn(
+      "No se encontraron hoteles. Asegúrate de tener archivos .yaml en src/content/hoteles/"
+    );
+    return [];
+  }
+
+  // Ordenar por nombre (opcional)
+  const sortedHotels = allHotels.sort((a, b) =>
+    a.data.nombre.localeCompare(b.data.nombre)
+  );
+
+  // Crear páginas con 6 hoteles cada una
+  return paginate(sortedHotels, {
+    pageSize: 6,
+    params: { page: undefined },
+    props: {},
+  });
+}
+
+// Destructurar los props de paginación
+const { page } = Astro.props;
+---
+
+<Layout title="Catálogo de Hoteles">
+  <main class="container mx-auto px-4 py-8">
+    <div class="pt-15"></div>
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+      Encuentre su alojamiento en Castro
+    </h1>
+
+    <!-- Información de paginación -->
+    <div class="mb-6 text-center text-gray-600">
+      <p>
+        Mostrando {page.start + 1} - {page.end + 1} de {page.total} hoteles
+      </p>
+    </div>
+
+    <!-- Grid de hoteles -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      {
+        page.data.map((hotel) => (
+          <HotelCard
+            nombre={hotel.data.nombre}
+            direccion={hotel.data.direccion}
+            telefono={hotel.data.telefono}
+            email={hotel.data.email}
+            web={hotel.data.web}
+            redes={hotel.data.redes}
+            imagen={hotel.data.imagen}
+          />
+        ))
+      }
+    </div>
+
+    <!-- Navegación de paginación -->
+    <nav class="flex justify-center items-center space-x-2">
+      <!-- Botón anterior -->
+      {
+        page.url.prev && (
+          <a
+            href={page.url.prev}
+            class="px-4 py-2 bg-[var(--primary-color)] text-white rounded-lg hover:bg-[var(--primary-hover-color)] transition-colors"
+          >
+            ← Anterior
+          </a>
+        )
+      }
+
+      <!-- Números de página -->
+      <div class="flex space-x-1">
+        {/* Página anterior si existe */}
+        {
+          page.currentPage > 1 && (
+            <a
+              href={page.url.prev}
+              class="px-3 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors"
+            >
+              {page.currentPage - 1}
+            </a>
+          )
+        }
+
+        {/* Página actual */}
+        <span
+          class="px-3 py-2 bg-[var(--primary-color)] text-white rounded font-semibold"
+        >
+          {page.currentPage}
+        </span>
+
+        {/* Página siguiente si existe */}
+        {
+          page.currentPage < page.lastPage && (
+            <a
+              href={page.url.next}
+              class="px-3 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors"
+            >
+              {page.currentPage + 1}
+            </a>
+          )
+        }
+      </div>
+
+      <!-- Botón siguiente -->
+      {
+        page.url.next && (
+          <a
+            href={page.url.next}
+            class="px-4 py-2 bg-[var(--primary-color)] text-white rounded-lg hover:bg-[var(--primary-hover-color)] transition-colors"
+          >
+            Siguiente →
+          </a>
+        )
+      }
+    </nav>
+
+    <!-- Navegación rápida (opcional) -->
+    <div class="mt-6 text-center">
+      <p class="text-sm text-gray-600 mb-2">Ir a página:</p>
+      <div class="flex justify-center space-x-1 flex-wrap">
+        {
+          Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
+            (pageNum) => (
+              <a
+                href={pageNum === 1 ? "/hoteles" : `/hoteles/${pageNum}`}
+                class={`px-2 py-1 text-xs rounded ${
+                  pageNum === page.currentPage
+                    ? "bg-[var(--primary-color)] text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                } transition-colors`}
+              >
+                {pageNum}
+              </a>
+            )
+          )
+        }
+      </div>
+    </div>
+  </main>
+</Layout>

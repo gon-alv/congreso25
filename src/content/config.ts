@@ -6,7 +6,7 @@ const equipo = defineCollection({
   schema: z.object({
     nombre: z.string(),
     cargo: z.string(),
-    foto: z.string().url(),
+    foto: z.string(),
     correo: z.string(),
     reversed: z.boolean()
   })

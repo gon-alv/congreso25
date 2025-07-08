@@ -1,0 +1,87 @@
+---
+const { nombre, direccion, telefono, email, web, redes, imagen } = Astro.props;
+
+// Convertir redes { facebook: "...", instagram: "..." } a array [{ nombre, url }]
+// Convertir redes a un array de objetos { nombre, url }, filtrando vacíos
+const redesArray = redes
+  ? Object.entries(redes)
+      .filter(([_, url]) => typeof url === "string" && url.trim() !== "")
+      .map(([nombre, url]) => ({ nombre, url }))
+  : [];
+
+console.log(redesArray);
+---
+
+<div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col">
+  <img
+    src={imagen}
+    alt={`Imagen del hotel ${nombre}`}
+    class="w-full h-48 object-cover object-center"
+  />
+
+  <div class="p-4 space-y-2 text-sm text-gray-700">
+    <h2 class="text-lg font-semibold text-gray-900">{nombre}</h2>
+    <p><strong>Dirección:</strong> {direccion}</p>
+    <p><strong>Teléfono:</strong> {telefono}</p>
+    <p>
+      <strong>Email:</strong>
+      <a
+        href={`mailto:${email}`}
+        class="text-[var(--primary-hover-color)] hover:underline">{email}</a
+      >
+    </p>
+    <p>
+      <strong>Web:</strong>
+      <a
+        href={web}
+        target="_blank"
+        class="text-[var(--primary-hover-color)] hover:underline">{web}</a
+      >
+    </p>
+    {
+      redesArray.length > 0 && (
+        <div class="flex items-center gap-4">
+          <ul class="flex gap-4">
+            {redesArray.map((red) => (
+              <li>
+                <a
+                  href={red.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                >
+                  <img
+                    src={`/images/socials/${red.nombre}.svg`}
+                    alt={red.nombre}
+                    class="w-10 h-10"
+                  />
+                  <!-- <span class="capitalize text-[var(--primary-hover-color)]">
+                    {red.nombre}
+                  </span>-->
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <!-- 
+    {
+      redes && redes.length > 0 && (
+        <div>
+          <strong>Redes Sociales:</strong>
+          <ul class="list-disc list-inside text-[var(--primary-hover-color)]">
+            {redes.map((red) => (
+              <li>
+                <a href={red.url} target="_blank" class="hover:underline">
+                  {red.nombre}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+  }-->
+  </div>
+</div>
