@@ -5,8 +5,6 @@ const redesArray = redes
       .filter(([_, url]) => typeof url === "string" && url.trim() !== "")
       .map(([nombre, url]) => ({ nombre, url }))
   : [];
-
-console.log(redesArray);
 ---
 
 <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col">
