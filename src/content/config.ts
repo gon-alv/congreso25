@@ -19,7 +19,7 @@ const hoteles = defineCollection({
     nombre: z.string(),
     direccion: z.string(),
     telefono: z.string(),
-    email: z.string().email(),
+    email: z.string().email().optional(),
     web: z.string().url().optional(),
     imagen: z.string(),
     redes: z.object({
