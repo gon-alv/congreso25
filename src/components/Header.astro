@@ -1,5 +1,4 @@
 ---
-//import type { AstroComponentFactory } from "astro";
 import "../styles/global.css";
 
 const navItems = [
@@ -13,76 +12,74 @@ const navItems = [
 ];
 ---
 
-head
 <header
-  class="fixed top-0 left-0 w-full bg-[var(--primary-color)] z-[999] shadow-xl"
+  class="fixed h-30 items-center xl:align-middle top-0 left-0 w-full bg-[var(--primary-color)] z-[999] shadow-xl"
 >
-  <div
-    class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4"
-  >
-    <!-- Logo -->
-    <a href="/" class="flex items-center space-x-2">
-      <img src="/images/marca/logo-header.png" alt="Logo" class="h-15 w-auto" />
-    </a>
+  <div class="mx-5 flex justify-between xl:px-5">
+    <div class="flex-shrink-0">
+      <a href="/" class="flex pt-5 items-center space-x-0">
+        <img
+          src="/images/marca/logo-header.png"
+          alt="Logo"
+          class="h-20 w-auto"
+        />
+      </a>
+    </div>
 
-    <!-- Botón de menú (solo visible en móvil) -->
-    <button
-      id="menu-toggle"
-      class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
-      aria-label="Abrir menú"
-    >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+    <div class="flex items-center space-x-6 align-middle">
+      <nav class="h-full align-middle hidden xl:flex font-bold text-white">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="hover:bg-linear-to-t from-[var(--primary-color)] to-[var(--primary-hover-color)] pt-10 px-3 duration-7000"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <button
+        id="menu-toggle"
+        class="xl:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-[var(--active-color)]"
+        aria-label="Abrir menú"
       >
-        <path d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
-
-    <!-- Navegación (desktop) -->
-    <nav
-      class="hidden md:flex font-bold absolute left-1/2 transform -translate-x-1/2 space-x-6 text-white"
-    >
-      {
-        navItems.map((item) => (
-          <a
-            href={item.href}
-            class="hover:text-[var(--active-text)] transition"
-          >
-            {item.label}
-          </a>
-        ))
-      }
-    </nav>
+        <svg
+          class="w-12 h-12"
+          fill="none"
+          stroke="white"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Menú móvil desplegable -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden px-4 pb-4 bg-white border-t border-gray-200"
+    class="hidden xl:hidden px-15 mt-5 pb-4 bg-[#e1d0ee] border-t border-gray-200"
   >
     {
       navItems.map((item) => (
         <a
           href={item.href}
-          class="block py-2 text-gray-800 hover:text-[var(--active-text)]"
+          class="block text-2xl font-bold py-2 text-gray-600 hover:text-[var(--primary-color)]"
         >
           {item.label}
         </a>
       ))
     }
   </div>
-
-  <script type="module">
-    const toggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
-    toggle?.addEventListener("click", () => {
-      mobileMenu?.classList.toggle("hidden");
-    });
-  </script>
 </header>
+<script type="module" src="src/scripts/menu.js"></script>
+<style>
+  nav a {
+    font-size: 1.25rem;
+  }
+</style>

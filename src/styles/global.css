@@ -44,6 +44,10 @@ h3 {
   font-weight: 600;
   vertical-align: left;
 }
+
+p {
+  font-size: 1.15rem;
+}
 .filter-main{
     filter: invert(18%) sepia(72%) saturate(2229%) hue-rotate(269deg) brightness(90%) contrast(89%);
 

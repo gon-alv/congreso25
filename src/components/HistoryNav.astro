@@ -1,0 +1,83 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="flex bg-white shadow pt-2.5">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center items-center">
+    <div class="hidden md:flex space-x-0 text-sm font-medium">
+      <a
+        href="/historia"
+        class:list={[
+          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)]",
+          currentPath === "/historia" || currentPath === "/historia/"
+            ? "text-[var(--primary-color)]"
+            : "text-gray-700",
+        ]}
+      >
+        ULagos
+      </a>
+      <a
+        href="/historia/campus-osorno"
+        class:list={[
+          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)]",
+          currentPath.startsWith("/historia/campus-osorno")
+            ? "text-[var(--primary-color)]"
+            : "text-gray-700",
+        ]}
+      >
+        Campus Osorno
+      </a>
+      <a
+        href="/historia/campus-chinquihue"
+        class:list={[
+          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)]",
+          currentPath.startsWith("/historia/campus-chinquihue")
+            ? "text-[var(--primary-color)]"
+            : "text-gray-700",
+        ]}
+      >
+        Sede Puerto Montt
+      </a>
+      {/* Repite el mismo patrón para los demás enlaces */}
+      <a
+        href="/historia/sede-chiloe"
+        class:list={[
+          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)]",
+          currentPath.startsWith("/historia/sede-chiloe")
+            ? "text-[var(--primary-color)]"
+            : "text-gray-700",
+        ]}
+      >
+        Sede Chiloé
+      </a>
+      <a
+        href="/historia/sede-santiago"
+        class:list={[
+          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)]",
+          currentPath.startsWith("/historia/sede-santiago")
+            ? "text-[var(--primary-color)]"
+            : "text-gray-700",
+        ]}
+      >
+        Sede Santiago
+      </a>
+      <a
+        href="/historia/congresos"
+        class:list={[
+          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)]",
+          currentPath.startsWith("/historia/congresos")
+            ? "text-[var(--primary-color)]"
+            : "text-gray-700",
+        ]}
+      >
+        Congresos de Secretarias
+      </a>
+    </div>
+  </div>
+</nav>
+<div id="nav-spacer" class="h-0"></div>
+<style>
+  nav a {
+    font-size: 1.25rem;
+  }
+</style>

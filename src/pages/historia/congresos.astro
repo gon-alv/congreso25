@@ -1,5 +1,6 @@
 ---
 import Gallery from "../../components/Gallery.astro";
+import HistoryNav from "../../components/HistoryNav.astro";
 import Layout from "../../layouts/Layout.astro";
 import "../../styles/global.css";
 ---
@@ -9,50 +10,7 @@ import "../../styles/global.css";
     class="relative w-[80%] pt-16 items-center justify-center ml-[10%] mb-6 border-0 shadow-lg bg-[var(--item-bg-color)] rounded-b-xl"
   >
     <div class="h-5"></div>
-    <!-- ESPACIO PARA NAVBAR ENTRE DISTINTAS PAGINAS 
-    <h1>Universidad de Los Lagos</h1>-->
-    <nav class="bg-white shadow">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center items-center">
-        <div class="hidden md:flex space-x-6 text-sm font-medium">
-          <a
-            href="/historia"
-            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
-          >
-            ULagos
-          </a>
-          <a
-            href="/historia/campus-osorno"
-            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
-          >
-            Campus Osorno
-          </a>
-          <a
-            href="/historia/campus-chinquihue"
-            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
-          >
-            Sede Puerto Montt
-          </a>
-          <a
-            href="/historia/sede-chiloe"
-            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
-          >
-            Sede Chiloé
-          </a>
-          <a
-            href="/historia/sede-santiago"
-            class="text-md pb-2 font-bold text-gray-700 hover:text-[var(--primary-hover-color)]"
-          >
-            Sede Santiago
-          </a>
-          <a
-            href="/historia/congresos"
-            class="text-md pb-2 font-bold text-[var(--primary-color)] hover:text-[var(--primary-hover-color)]"
-          >
-            Congresos de Secretarias
-          </a>
-        </div>
-      </div>
-    </nav>
+    <HistoryNav />
 
     <div class="w-[75%] ml-[12.5%] pt-5 pb-15">
       <h2>Historia de Nuestros Congresos y Encuentros</h2>
