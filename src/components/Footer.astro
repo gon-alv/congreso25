@@ -2,8 +2,138 @@
 import "../styles/global.css";
 ---
 
-<footer class="mt-auto">
-  <div class="bg-[var(--primary-color)] h-96 mt-auto">
-    <h1 class="p-5 text-4xl text-[var(--bar-text)] text-center">Ciao mondo!</h1>
+<!--
+<footer class="footer mt-auto bg-[var(--primary-color)]">
+  <div class="footer-container mx-25 mt-5">
+    <div class="footer-column">
+      <h class="text-[var(--primary-hover-color)] text-xl font-bold"
+        >Test-thingy</h
+      >
+      <ul class="contact-info list-disc text-md text-[var(--main-bg-color)]">
+        <li>Holanda</li>
+        <li>sidolidosi dk dsa</li>
+        <li>aksdkfj jkee</li>
+        <li>pepeeepeero</li>
+      </ul>
+      <div class="footer-column right-0"></div>
+      <div class="footer-column">
+        <div>
+          <a
+            href="https://www.ulagos.cl/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <img src="/images/marca/ULAGOS-02.png" width="250" />
+          </a>
+        </div>
+        <div>
+          <img src="/images/marca/acredt.png" width="250" />
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>-->
+<footer class="footer mt-auto bg-[var(--primary-color)]">
+  <div class="footer-container mx-auto max-w-6xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="footer-column">
+        <h3 class="text-[var(--primary-hover-color)] text-xl font-bold mb-4">
+          Test-thingy
+        </h3>
+        <ul class="contact-info space-y-2 text-md text-[var(--main-bg-color)]">
+          <li class="flex items-start">
+            <span class="mr-2">•</span>
+            <span>Holanda</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2">•</span>
+            <span>sidolidosi dk dsa</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2">•</span>
+            <span>aksdkfj jkee</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2">•</span>
+            <span>pepeeepeero</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="text-[var(--primary-hover-color)] text-xl font-bold mb-4">
+          Enlaces Útiles
+        </h3>
+        <ul class="space-y-2 text-md text-[var(--main-bg-color)]">
+          <li>
+            <a
+              href="#"
+              class="hover:text-[var(--primary-hover-color)] transition-colors"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:text-[var(--primary-hover-color)] transition-colors"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:text-[var(--primary-hover-color)] transition-colors"
+              >Contacto</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:text-[var(--primary-hover-color)] transition-colors"
+              >Acerca de</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3
+          class="text-[var(--primary-hover-color)] text-xl font-bold mb-4 text-right"
+        >
+          Instituciones
+        </h3>
+        <div class="space-y-4 flex flex-col items-end">
+          <div>
+            <a
+              href="https://www.ulagos.cl/"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="block hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/images/marca/ULAGOS-02.png"
+                alt="Universidad de Los Lagos"
+                width="200"
+                class="max-w-full h-auto"
+              />
+            </a>
+          </div>
+          <div>
+            <img
+              src="/images/marca/acredt.png"
+              alt="Acreditación"
+              width="200"
+              class="max-w-full h-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-[var(--primary-hover-color)] mt-8 pt-4">
+      <p class="text-center text-[var(--main-bg-color)] text-sm">
+        © 2025 gon-alv. Todos los derechos reservados.
+      </p>
+    </div>
   </div>
 </footer>
