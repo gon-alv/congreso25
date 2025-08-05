@@ -7,8 +7,7 @@ const equipo = defineCollection({
     nombre: z.string(),
     cargo: z.string(),
     foto: z.string(),
-    correo: z.string(),
-    reversed: z.boolean()
+    email: z.string()
   })
 });
 

@@ -4,69 +4,55 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 const equipo = await getCollection("equipo");
-const { Content } = await render(equipo);
-//console.log(equipo);
+const nancy = equipo.find(
+  (persona) => persona.data.email === "noyarzo@ulagos.cl"
+);
+const restoDelEquipo = equipo.filter(
+  (persona) => persona.data.email !== "noyarzo@ulagos.cl"
+);
+restoDelEquipo.sort((a, b) => a.data.nombre.localeCompare(b.data.nombre));
+
+const equipoOrdenado = nancy ? [nancy, ...restoDelEquipo] : restoDelEquipo;
 ---
 
 <Layout title="Equipo organizador">
   <div class="h-full w-full bg-[var(--main-bg-color)]">
     <div
-      class="flex flex-col gap-8 w-[80%] items-center justify-center mt-[8%] lg:mt-25 mb-[5%] mx-[10%] border-0 rounded-lg pb-6 shadow-lg bg-gray-50"
+      class="flex flex-col gap-8 w-[90%] items-center justify-center mt-[8%] lg:mt-25 mb-[5%] mx-[5%] md:pt-10 md:pb-15 border-0 rounded-lg pb-6 shadow-lg bg-gray-50"
     >
-      <h1>Nuestro equipo</h1>
-      {
-        await Promise.all(
-          equipo.map(async (persona) => {
-            const { Content } = await render(persona);
-            const { nombre, cargo, foto, correo, reversed } = persona.data;
-            if (!reversed) {
+      <h1>Comisión Organizadora Congreso 2025</h1>
+      <div class="grid grid-cols-3 mx-15">
+        {
+          await Promise.all(
+            equipoOrdenado.map(async (persona) => {
+              const { Content } = await render(persona);
+              const { nombre, cargo, foto, email } = persona.data;
               return (
-                <article class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl">
-                  <img
-                    dir="ltr"
-                    class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                    src={`/images/equipo/${foto}`}
-                    alt={`${nombre}`}
-                  />
-                  <div class="flex flex-col h-70 pt-5 px-4 text-wrap align-text-top leading-normal">
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight">
-                      {nombre}
-                    </h2>
-                    <h3 class="mb-2 text-xs font-bold tracking-tight">
-                      {cargo}
-                    </h3>
-                    <div class="text-xs text-gray-700">
-                      <Content />
-                    </div>
-                  </div>
-                </article>
+                <div class="border-0 bg-[var(--main-bg-color)] shadow-xl hover:shadow-2xl rounded-2xl bg-red-250 mb-10 mx-5 px-2 pt-3 items-center">
+                  <figure class="flex align-middle justify-center mb-2 transition-all duration-250">
+                    <img
+                      src={`/images/equipo/${foto}`}
+                      class="h-60 w-60 rounded-full object-cover"
+                    />
+                  </figure>
+                  <h3>{nombre}</h3>
+                  <p class="text-xs text-gray-500 text-shadow-xs font-bold">
+                    {cargo}
+                  </p>
+                  <p>
+                    <a
+                      href={`mailto:${email}`}
+                      class="text-2xs text-[var(--primary-hover-color)] underline hover:text-[var(--primary-color)]"
+                    >
+                      {email}
+                    </a>
+                  </p>
+                </div>
               );
-            } else {
-              return (
-                <article class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl">
-                  <div class="flex flex-col h-70 pt-5 px-4 text-wrap align-text-top leading-normal">
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight">
-                      {nombre}
-                    </h2>
-                    <h3 class="mb-2 text-xs font-bold tracking-tight">
-                      {cargo}
-                    </h3>
-                    <div class="text-xs text-gray-700">
-                      <Content />
-                    </div>
-                  </div>
-                  <img
-                    dir="rtl"
-                    class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                    src={`/images/equipo/${foto}`}
-                    alt={`${nombre}`}
-                  />
-                </article>
-              );
-            }
-          })
-        )
-      }
+            })
+          )
+        }
+      </div>
     </div>
   </div>
 </Layout>
