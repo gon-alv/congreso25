@@ -1,6 +1,6 @@
 ---
 nombre: Ingrid Sobarzo Soto
-cargo: Miembro de la comisión Organizadora
+cargo: Comisión Organizadora
 email: ingrid.sobarzo@ulagos.cl
 foto: placeholder.png
 ---
