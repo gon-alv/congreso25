@@ -21,7 +21,7 @@ const equipoOrdenado = nancy ? [nancy, ...restoDelEquipo] : restoDelEquipo;
       class="flex flex-col gap-8 w-[90%] items-center justify-center mt-[8%] lg:mt-25 mb-[5%] mx-[5%] md:pt-10 md:pb-15 border-0 rounded-lg pb-6 shadow-lg bg-gray-50"
     >
       <h1>Comisión Organizadora Congreso 2025</h1>
-      <div class="grid grid-cols-3 mx-15">
+      <div class="grid grid-cols-1 md:grid-cols-3 mx-15">
         {
           await Promise.all(
             equipoOrdenado.map(async (persona) => {

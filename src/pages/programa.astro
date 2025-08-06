@@ -3,7 +3,628 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 ---
 
-<Layout title="XIX Encuentro Nacional de Secretarias del CRUCh" />
+<Layout title="Programa del Evento">
+  <main class="event-schedule">
+    <div class="event-header">
+      <h1>Congreso de Secretarias del CRUCh 2025</h1>
+      <p>19 al 22 de Noviembre• Castro, Chiloé</p>
+    </div>
 
+    <div class="tabs-container">
+      <button class="tab active" data-day="day1">Día 1 - Miércoles</button>
+      <button class="tab" data-day="day2">Día 2 - Jueves</button>
+      <button class="tab" data-day="day3">Día 3 - Viernes</button>
+      <button class="tab" data-day="day4">Día 4 - Sábado</button>
+    </div>
 
-<style></style>
+    <div class="schedule-content">
+      <div id="day1" class="day-content active">
+        <h2 class="day-title">Miércoles 19 de Noviembre</h2>
+
+        <div class="schedule-item">
+          <div class="time">9:00 - 11:00</div>
+          <div class="event-details">
+            <div class="event-title">Acreditación</div>
+            <div class="event-description"></div>
+            <div class="event-location">Biblioteca Butalcura</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">11:30 - 12:30</div>
+          <div class="event-details">
+            <div class="event-title">Inauguración</div>
+            <div class="event-location">Auditorio Archipiélago de Chiloé</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">12:45 - 13:30</div>
+          <div class="event-details">
+            <div class="event-title">Cocktail de Bienvenida</div>
+            <div class="event-location">Hall 2º Piso</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">Muestra Artesanal</div>
+            <div class="event-description">
+              Muestra de diversas artesanías locales.
+            </div>
+            <div class="event-location">Hall 1er Piso</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 1: Inclusión y Accesibilidad Digital
+            </div>
+            <div class="event-speaker">Sr. Juan Javier García Ramírez</div>
+            <div class="event-location">Sala 403</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 2: Innovación y Desarrollo profesional en la era de la
+              Inteligancia Artifical
+            </div>
+            <div class="event-speaker">Sr. Marcelo Navarro Toro</div>
+            <div class="event-location">Sala 404</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 3: Transformación Digital en la Gestión Universitaria
+            </div>
+            <div class="event-speaker">Srta. Bárbara Díaz Navarro</div>
+            <div class="event-location">Sala 405</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 4: Eficiencia y Reducción del Estrés en el día a día
+            </div>
+            <div class="event-speaker">Srta. Yamilex Iturra Toledo</div>
+            <div class="event-location">Sala 406</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">16:00 - 16:15</div>
+          <div class="event-details">
+            <div class="event-title">Coffee Break</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 2 -->
+      <div id="day2" class="day-content">
+        <h2 class="day-title">Jueves 20 de Noviembre</h2>
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 1: Inclusión y Accesibilidad Digital
+            </div>
+            <div class="event-speaker">Sr. Juan Javier García Ramírez</div>
+            <div class="event-location">Sala 403</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 2: Innovación y Desarrollo profesional en la era de la
+              Inteligancia Artifical
+            </div>
+            <div class="event-speaker">Sr. Marcelo Navarro Toro</div>
+            <div class="event-location">Sala 404</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 3: Transformación Digital en la Gestión Universitaria
+            </div>
+            <div class="event-speaker">Srta. Bárbara Díaz Navarro</div>
+            <div class="event-location">Sala 405</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 4: Eficiencia y Reducción del Estrés en el día a día
+            </div>
+            <div class="event-speaker">Srta. Yamilex Iturra Toledo</div>
+            <div class="event-location">Sala 406</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">Muestra Artesanal</div>
+            <div class="event-location">Hall 1er Piso</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">11:00 - 11:15</div>
+          <div class="event-details">
+            <div class="event-title">Coffee Break</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">13:00 - 14:00</div>
+          <div class="event-details">
+            <div class="event-title">Almuerzo</div>
+            <div class="event-location">Casino (Piso -1)</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 1: Inclusión y Accesibilidad Digital
+            </div>
+            <div class="event-speaker">Sr. Juan Javier García Ramírez</div>
+            <div class="event-location">Sala 403</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 2: Innovación y Desarrollo profesional en la era de la
+              Inteligancia Artifical
+            </div>
+            <div class="event-speaker">Sr. Marcelo Navarro Toro</div>
+            <div class="event-location">Sala 404</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 3: Transformación Digital en la Gestión Universitaria
+            </div>
+            <div class="event-speaker">Srta. Bárbara Díaz Navarro</div>
+            <div class="event-location">Sala 405</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">14:00 - 18:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 4: Eficiencia y Reducción del Estrés en el día a día
+            </div>
+            <div class="event-speaker">Srta. Yamilex Iturra Toledo</div>
+            <div class="event-location">Sala 406</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">16:00 - 16:15</div>
+          <div class="event-details">
+            <div class="event-title">Coffee Break</div>
+          </div>
+        </div>
+      </div>
+      <!-- dia 3 -->
+      <div id="day3" class="day-content">
+        <h2 class="day-title">Viernes 21 de Noviembre</h2>
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 1: Inclusión y Accesibilidad Digital
+            </div>
+            <div class="event-speaker">Sr. Juan Javier García Ramírez</div>
+            <div class="event-location">Sala 403</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 2: Innovación y Desarrollo profesional en la era de la
+              Inteligancia Artifical
+            </div>
+            <div class="event-speaker">Sr. Marcelo Navarro Toro</div>
+            <div class="event-location">Sala 404</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 3: Transformación Digital en la Gestión Universitaria
+            </div>
+            <div class="event-speaker">Srta. Bárbara Díaz Navarro</div>
+            <div class="event-location">Sala 405</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="time">09:00 - 13:00</div>
+          <div class="event-details">
+            <div class="event-title">
+              Sección 4: Eficiencia y Reducción del Estrés en el día a día
+            </div>
+            <div class="event-speaker">Srta. Yamilex Iturra Toledo</div>
+            <div class="event-location">Sala 406</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">14:15</div>
+          <div class="event-details">
+            <div class="event-title">Foto Oficial</div>
+            <div class="event-location">Frontis Sede Chiloé ULAGOS</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">15:30</div>
+          <div class="event-details">
+            <div class="event-title">Reunión de Delegadas</div>
+            <div class="event-location">Lugar por Confirmar</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">20:00</div>
+          <div class="event-details">
+            <div class="event-title">Cena de Clausura</div>
+            <div class="event-description">Vestimenta semi-formal.</div>
+            <div class="event-location">Hotel Enjoy Chiloé</div>
+          </div>
+        </div>
+      </div>
+      <div id="day4" class="day-content">
+        <h2 class="day-title">Sábado 22 de Noviembre</h2>
+        <div class="schedule-item">
+          <div class="time">09:30 - 15:30</div>
+          <div class="event-details">
+            <div class="event-title">Visita Chiloé Mágico</div>
+            <div class="event-description">
+              <p>
+                Visita al Sector Interior de Chiloé, visitando Dalcahue (Feria
+                Artesanal, Iglesia Patrimonial y costanera) y Muelle Peatonal
+                Aucar (Isla de las Almas Navegantes).
+              </p>
+              <p>Se recomienda ropa cómoda, protector solar y gorro.</p>
+              <p>se entregará colación.</p>
+              <p>Se solicita estar 15 minutos antes de la hora de salida.</p>
+            </div>
+            <div class="event-location">Plaza de Armas de Castro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .event-schedule {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+  }
+
+  .event-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    margin-top: 25px;
+    background: linear-gradient(
+      45deg,
+      var(--primary-hover-color) 0%,
+      var(--main-bg-color) 100%
+    );
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .event-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .event-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .tabs-container {
+    display: flex;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .tab:hover {
+    background: var(--primary-color);
+    color: var(--main-bg-color);
+    transform: translateY(-2px);
+  }
+
+  .tab.active {
+    color: var(--main-bg-color);
+    background: var(--primary-color);
+  }
+
+  .tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--main-bg-color);
+    animation: slideIn 0.3s ease;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .schedule-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .day-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .day-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .day-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .schedule-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 5px solid var(--main-bg-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .schedule-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+
+  .time {
+    background: linear-gradient(
+      135deg,
+      var(--primary-hover-color),
+      var(--primary-color)
+    );
+    color: white;
+    padding: 1.5rem;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .event-details {
+    padding: 1.5rem;
+    flex: 1;
+  }
+
+  .event-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-description {
+    color: #7f8c8d;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .event-speaker {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-location {
+    background: #ecf0f1;
+    color: #34495e;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .event-schedule {
+      padding: 1rem;
+    }
+
+    .event-header {
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .event-header h1 {
+      font-size: 2rem;
+    }
+
+    .tabs-container {
+      flex-direction: column;
+    }
+
+    .tab {
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+    .schedule-content {
+      padding: 1.5rem;
+    }
+
+    .schedule-item {
+      flex-direction: column;
+    }
+
+    .time {
+      min-width: auto;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .event-details {
+      padding: 1.5rem;
+    }
+
+    .day-title {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+
+<script>
+  class EventSchedule {
+    constructor() {
+      this.init();
+    }
+
+    init() {
+      this.bindEvents();
+      this.animateItems();
+    }
+
+    bindEvents() {
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", (e) => {
+          const dayId = e.target.dataset.day;
+          this.showDay(dayId, e.target);
+        });
+      });
+    }
+
+    showDay(dayId, tabElement) {
+      // Ocultar todo el contenido de días
+      const dayContents = document.querySelectorAll(".day-content");
+      dayContents.forEach((content) => {
+        content.classList.remove("active");
+      });
+
+      // Remover clase activa de todas las pestañas
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach((tab) => {
+        tab.classList.remove("active");
+      });
+
+      // Mostrar el día seleccionado y activar la pestaña
+      const targetDay = document.getElementById(dayId);
+      if (targetDay) {
+        targetDay.classList.add("active");
+        tabElement.classList.add("active");
+      }
+    }
+
+    animateItems() {
+      const scheduleItems = document.querySelectorAll(".schedule-item");
+      scheduleItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+        item.style.animation = "fadeIn 0.6s ease forwards";
+      });
+    }
+  }
+
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener("DOMContentLoaded", () => {
+    new EventSchedule();
+  });
+
+  // También inicializar si Astro ya ha cargado el contenido
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      new EventSchedule();
+    });
+  } else {
+    new EventSchedule();
+  }
+</script>
