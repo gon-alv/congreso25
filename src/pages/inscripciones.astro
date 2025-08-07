@@ -330,11 +330,15 @@ import "../styles/global.css";
     transform: translateY(-50%);
   }
   .inscription-button {
-    box-shadow: inset 1px -7px 7px -3px #e184f3;
-    background: linear-gradient(to bottom, #c123de 5%, #a20dbd 100%);
-    background-color: #c123de;
+    box-shadow: inset 1px -7px 7px -3px var(--main-bg-color);
+    background: linear-gradient(
+      to bottom,
+      var(--primary-hover-color) 5%,
+      #a20dbd 100%
+    );
+    background-color: var(--primary-hover-color);
     border-radius: 6px;
-    border: 1px solid #a511c0;
+    border: 1px solid var(--primary-color);
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
@@ -346,7 +350,11 @@ import "../styles/global.css";
     text-shadow: 4px 1px 2px #9b14b3;
   }
   .inscription-button:hover {
-    background: linear-gradient(to bottom, #a20dbd 5%, #c123de 100%);
+    background: linear-gradient(
+      to bottom,
+      #a20dbd 5%,
+      var(--primary-hover-color) 100%
+    );
     background-color: #a20dbd;
   }
   .inscription-button:active {
