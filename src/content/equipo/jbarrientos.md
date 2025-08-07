@@ -1,6 +1,6 @@
 ---
 nombre: Juana Barrientos Vidal
 cargo: Miembro de Comisión Oreganizadora
-foto: placeholder.png 
+foto: jbarrientos.jpg
 email: jbarrientos@ulagos.cl
 ---
