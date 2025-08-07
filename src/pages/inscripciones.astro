@@ -222,6 +222,9 @@ import "../styles/global.css";
             rel="noreferrer noopener"
             class="inscription-button">Inscríbase aquí</a
           >
+          <p class="italic text-xs text-gray-800">
+            Curso autorizado por SENCE, código en trámite.
+          </p>
         </div>
       </div>
       <h2>¡Que tengas una excelente experiencia!</h2>
@@ -414,19 +417,31 @@ import "../styles/global.css";
       margin: 15px auto;
     }
   }
+
+  /*Boton de inscripciones */
   .button-container {
     height: 100px;
     position: relative;
     margin-bottom: 35px;
+    /* Mobile: Añadir padding y ajustar altura */
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   .vertical-center {
     margin: 0;
     position: absolute;
     top: 50%;
-    left: 40%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    left: 50%; /* Cambio: era 40%, ahora centrado */
+    -ms-transform: translate(-50%, -50%); /* Añadido -50% en X */
+    transform: translate(-50%, -50%); /* Centrado perfecto */
+    width: 100%; /* Para contener el contenido */
+    text-align: center; /* Centrar contenido interno */
+    max-width: 600px; /* Limitar ancho máximo */
   }
+
   .inscription-button {
     box-shadow: inset 1px -7px 7px -3px var(--main-bg-color);
     background: linear-gradient(
@@ -446,7 +461,14 @@ import "../styles/global.css";
     padding: 20px 32px;
     text-decoration: none;
     text-shadow: 4px 1px 2px #9b14b3;
+    /* Mobile: Hacer responsive */
+    width: 100%; /* Full width en mobile */
+    max-width: 300px; /* Máximo en desktop */
+    text-align: center; /* Centrar texto */
+    box-sizing: border-box; /* Incluir padding en width */
+    transition: all 0.3s ease; /* Transiciones suaves */
   }
+
   .inscription-button:hover {
     background: linear-gradient(
       to bottom,
@@ -454,17 +476,139 @@ import "../styles/global.css";
       var(--primary-hover-color) 100%
     );
     background-color: #a20dbd;
+    transform: translateY(-2px); /* Efecto hover sutil */
   }
+
   .inscription-button:active {
     position: relative;
     align-self: center;
     top: 1px;
+    transform: translateY(0); /* Cancelar hover transform */
   }
+
   .horas-totales-figure {
     margin: 0;
     padding: 0;
   }
 
+  /* MEDIA QUERIES RESPONSIVE */
+
+  /* Mobile Small (hasta 480px) */
+  @media (max-width: 480px) {
+    .button-container {
+      height: auto; /* Altura automática */
+      min-height: 80px; /* Mínima altura */
+      margin-bottom: 20px;
+      padding: 0 0.5rem; /* Menos padding lateral */
+    }
+
+    .vertical-center {
+      position: relative; /* Cambiar a relative */
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+      padding: 1rem 0;
+    }
+
+    .inscription-button {
+      font-size: 18px; /* Texto más pequeño */
+      padding: 15px 20px; /* Padding reducido */
+      max-width: none; /* Sin límite de ancho */
+      min-width: 200px; /* Ancho mínimo */
+    }
+  }
+
+  /* Mobile Medium (481px - 640px) */
+  @media (min-width: 481px) and (max-width: 640px) {
+    .button-container {
+      height: 90px;
+      margin-bottom: 30px;
+    }
+
+    .inscription-button {
+      font-size: 20px;
+      padding: 18px 28px;
+      max-width: 280px;
+    }
+  }
+
+  /* Tablet (641px - 768px) */
+  @media (min-width: 641px) and (max-width: 768px) {
+    .button-container {
+      height: 95px;
+    }
+
+    .inscription-button {
+      font-size: 21px;
+      padding: 19px 30px;
+      max-width: 290px;
+    }
+  }
+
+  /* Desktop (769px en adelante) */
+  @media (min-width: 769px) {
+    .button-container {
+      height: 100px;
+      margin-bottom: 35px;
+    }
+
+    .vertical-center {
+      max-width: 600px;
+    }
+
+    .inscription-button {
+      font-size: 23px;
+      padding: 20px 32px;
+      max-width: 300px;
+      width: auto; /* Ancho automático en desktop */
+    }
+  }
+
+  /* Large Desktop (1024px en adelante) */
+  @media (min-width: 1024px) {
+    .button-container {
+      margin-bottom: 40px;
+    }
+
+    .inscription-button {
+      max-width: 350px;
+      padding: 22px 36px;
+    }
+  }
+
+  /* Accesibilidad: Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .inscription-button {
+      transition: none;
+    }
+
+    .inscription-button:hover {
+      transform: none;
+    }
+  }
+
+  /* Focus States para accesibilidad */
+  .inscription-button:focus {
+    outline: 3px solid rgba(66, 153, 225, 0.6);
+    outline-offset: 2px;
+  }
+
+  /* Ajustes para pantallas muy pequeñas */
+  @media (max-width: 320px) {
+    .inscription-button {
+      font-size: 16px;
+      padding: 12px 16px;
+      min-width: 180px;
+    }
+
+    .button-container {
+      min-height: 70px;
+      margin-bottom: 15px;
+    }
+  }
+
+  /* elemento de horas */
   .horas-container {
     position: relative;
     width: 200px;
