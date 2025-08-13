@@ -1,272 +1,295 @@
 ---
+interface NavItem {
+  name: string;
+  path: string;
+}
+
+const navItems: NavItem[] = [
+  { name: "ULagos", path: "/historia/" },
+  { name: "Campus Osorno", path: "/historia/campus-osorno" },
+  { name: "Sede Pto. Montt", path: "/historia/campus-chinquihue" },
+  { name: "Sede Chiloé", path: "/historia/sede-chiloe" },
+  { name: "Sede Santiago", path: "/historia/sede-santiago" },
+  { name: "Congresos", path: "/historia/congresos" },
+];
+
 const currentPath = Astro.url.pathname;
+const currentIndex = navItems.findIndex((item) => item.path === currentPath);
+const initialIndex = currentIndex !== -1 ? currentIndex : 0;
 ---
 
-<nav class="flex bg-white shadow pt-2.5 relative">
-  <div
-    class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center w-full"
-  >
-    <!-- Logo/Brand - Siempre visible -->
-    <div class="flex items-center">
-      <span class="text-lg font-bold text-[var(--primary-color)] md:hidden"
-        >ULagos</span
-      >
-    </div>
-
-    <!-- Desktop Navigation -->
-    <div class="hidden md:flex space-x-0 text-sm font-medium">
-      <a
-        href="/historia"
-        class:list={[
-          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath === "/historia" || currentPath === "/historia/"
-            ? "text-[var(--primary-color)]"
-            : "text-gray-700",
-        ]}
-      >
-        ULagos
-      </a>
-      <a
-        href="/historia/campus-osorno"
-        class:list={[
-          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/campus-osorno")
-            ? "text-[var(--primary-color)]"
-            : "text-gray-700",
-        ]}
-      >
-        Campus Osorno
-      </a>
-      <a
-        href="/historia/campus-chinquihue"
-        class:list={[
-          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/campus-chinquihue")
-            ? "text-[var(--primary-color)]"
-            : "text-gray-700",
-        ]}
-      >
-        Sede Puerto Montt
-      </a>
-      <a
-        href="/historia/sede-chiloe"
-        class:list={[
-          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/sede-chiloe")
-            ? "text-[var(--primary-color)]"
-            : "text-gray-700",
-        ]}
-      >
-        Sede Chiloé
-      </a>
-      <a
-        href="/historia/sede-santiago"
-        class:list={[
-          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/sede-santiago")
-            ? "text-[var(--primary-color)]"
-            : "text-gray-700",
-        ]}
-      >
-        Sede Santiago
-      </a>
-      <a
-        href="/historia/congresos"
-        class:list={[
-          "text-md px-2 font-bold hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/congresos")
-            ? "text-[var(--primary-color)]"
-            : "text-gray-700",
-        ]}
-      >
-        Congresos de Secretarias
-      </a>
-    </div>
-
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-button"
-      class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] rounded"
-      aria-label="Abrir menú de navegación"
-    >
-      <span
-        class="block w-6 h-0.5 bg-gray-700 transition-transform duration-300"
-        id="hamburger-line-1"></span>
-      <span
-        class="block w-6 h-0.5 bg-gray-700 transition-opacity duration-300"
-        id="hamburger-line-2"></span>
-      <span
-        class="block w-6 h-0.5 bg-gray-700 transition-transform duration-300"
-        id="hamburger-line-3"></span>
-    </button>
+<nav class="navigation-bar">
+  <div class="desktop-nav">
+    <ul class="nav-list">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.path}
+              class={`nav-link ${item.path === currentPath ? "active" : ""}`}
+            >
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 
-  <!-- Mobile Navigation Menu (Initially Hidden) -->
-  <div
-    id="mobile-menu"
-    class="absolute top-full left-0 w-full bg-white shadow-lg border-t md:hidden transform -translate-y-2 opacity-0 invisible transition-all duration-300 ease-in-out z-50"
-  >
-    <div class="px-4 py-3 space-y-1">
-      <a
-        href="/historia"
-        class:list={[
-          "block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath === "/historia" || currentPath === "/historia/"
-            ? "text-[var(--primary-color)] bg-gray-50"
-            : "text-gray-700",
-        ]}
-      >
-        ULagos
-      </a>
-      <a
-        href="/historia/campus-osorno"
-        class:list={[
-          "block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/campus-osorno")
-            ? "text-[var(--primary-color)] bg-gray-50"
-            : "text-gray-700",
-        ]}
-      >
-        Campus Osorno
-      </a>
-      <a
-        href="/historia/campus-chinquihue"
-        class:list={[
-          "block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/campus-chinquihue")
-            ? "text-[var(--primary-color)] bg-gray-50"
-            : "text-gray-700",
-        ]}
-      >
-        Sede Puerto Montt
-      </a>
-      <a
-        href="/historia/sede-chiloe"
-        class:list={[
-          "block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/sede-chiloe")
-            ? "text-[var(--primary-color)] bg-gray-50"
-            : "text-gray-700",
-        ]}
-      >
-        Sede Chiloé
-      </a>
-      <a
-        href="/historia/sede-santiago"
-        class:list={[
-          "block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/sede-santiago")
-            ? "text-[var(--primary-color)] bg-gray-50"
-            : "text-gray-700",
-        ]}
-      >
-        Sede Santiago
-      </a>
-      <a
-        href="/historia/congresos"
-        class:list={[
-          "block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 hover:text-[var(--primary-hover-color)] transition-colors",
-          currentPath.startsWith("/historia/congresos")
-            ? "text-[var(--primary-color)] bg-gray-50"
-            : "text-gray-700",
-        ]}
-      >
-        Congresos de Secretarias
-      </a>
+  <div class="mobile-nav">
+    <div class="nav-controls">
+      <button class="nav-arrow" id="prevBtn" aria-label="Anterior">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="15,18 9,12 15,6"></polyline>
+        </svg>
+      </button>
+
+      <div class="current-item">
+        <a href="/" id="currentLink" class="current-link">
+          <span id="currentText">ULagos</span>
+        </a>
+      </div>
+
+      <button class="nav-arrow" id="nextBtn" aria-label="Siguiente">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="9,18 15,12 9,6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="position-indicators">
+      {
+        navItems.map((_, index) => (
+          <button
+            class={`indicator ${index === initialIndex ? "active" : ""}`}
+            data-index={index}
+            aria-label={`Ir a ${navItems[index].name}`}
+          />
+        ))
+      }
     </div>
   </div>
 </nav>
 
-<div id="nav-spacer" class="h-0"></div>
-
 <style>
-  /* Desktop Navigation Styles */
-  nav a {
-    font-size: 1.25rem;
+  .navigation-bar {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  /* Mobile Menu States */
-  .mobile-menu-open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
+  /* Versión Desktop */
+  .desktop-nav {
+    display: none;
   }
 
-  /* Hamburger Animation States */
-  .hamburger-open #hamburger-line-1 {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .hamburger-open #hamburger-line-2 {
-    opacity: 0;
-  }
-
-  .hamburger-open #hamburger-line-3 {
-    transform: rotate(-45deg) translate(7px, -6px);
-  }
-
-  /* Media Queries for Fine-tuning */
-  @media (max-width: 640px) {
-    nav a {
-      font-size: 1.1rem;
+  @media (min-width: 768px) {
+    .desktop-nav {
+      display: block;
     }
-
-    .max-w-6xl {
-      max-width: 100%;
+    .mobile-nav {
+      display: none !important;
     }
   }
 
-  @media (max-width: 480px) {
-    nav {
-      padding-top: 0.5rem;
-    }
-
-    nav a {
-      font-size: 1rem;
-    }
-
-    .max-w-6xl {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  /* Tablet Adjustments */
-  @media (min-width: 641px) and (max-width: 768px) {
-    nav a {
-      font-size: 1.15rem;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
+  .nav-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #374151;
+    text-decoration: none;
+    border-right: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+    font-weight: 500;
   }
 
-  /* Large Desktop Optimizations */
-  @media (min-width: 1024px) {
-    nav a {
-      font-size: 1.25rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
+  .nav-link:last-child {
+    border-right: none;
   }
 
-  /* Accessibility: Reduced Motion */
-  @media (prefers-reduced-motion: reduce) {
-    #mobile-menu,
-    #hamburger-line-1,
-    #hamburger-line-2,
-    #hamburger-line-3,
-    nav a {
-      transition: none;
-    }
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--primary-hover-color);
+    background: rgba(0, 0, 0, 0.05);
   }
 
-  /* Focus States for Better Accessibility */
-  @media (max-width: 767px) {
-    #mobile-menu a:focus {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
-    }
+  /* Versión Mobile */
+  .mobile-nav {
+    display: block;
+    padding: 1rem;
+  }
+
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .nav-arrow {
+    background: none;
+    border: none;
+    color: #374151;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary-hover-color);
+  }
+
+  .current-item {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 1rem;
+  }
+
+  .current-link {
+    color: #374151;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+  }
+
+  .current-link:hover {
+    color: var(--primary-hover-color);
+  }
+
+  .position-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .indicator:hover {
+    background: #9ca3af;
+  }
+
+  .indicator.active {
+    background: var(--primary-hover-color);
   }
 </style>
 
-<script type="module" src="scripts/history-menu.js"></script>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navItems = [
+      { name: "ULagos", path: "/historia/" },
+      { name: "Campus Osorno", path: "/historia/campus-osorno" },
+      { name: "Sede Pto. Montt", path: "/historia/campus-chinquihue" },
+      { name: "Sede Chiloé", path: "/historia/sede-chiloe" },
+      { name: "Sede Santiago", path: "/historia/sede-santiago" },
+      { name: "Congresos", path: "/historia/congresos" },
+    ];
+
+    let currentIndex = 0;
+    const currentPath = window.location.pathname;
+    const foundIndex = navItems.findIndex((item) => item.path === currentPath);
+    if (foundIndex !== -1) {
+      currentIndex = foundIndex;
+    }
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const currentText = document.getElementById("currentText");
+    const currentLink = document.getElementById("currentLink");
+    const indicators = document.querySelectorAll(".indicator");
+
+    function updateUI() {
+      const currentItem = navItems[currentIndex];
+
+      if (currentText) currentText.textContent = currentItem.name;
+      if (currentLink) currentLink.href = currentItem.path;
+
+      indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+          indicator.classList.add("active");
+        } else {
+          indicator.classList.remove("active");
+        }
+      });
+
+      window.location.href = currentItem.path;
+    }
+
+    function goToPrevious() {
+      currentIndex =
+        currentIndex === 0 ? navItems.length - 1 : currentIndex - 1;
+      updateUI();
+    }
+
+    function goToNext() {
+      currentIndex =
+        currentIndex === navItems.length - 1 ? 0 : currentIndex + 1;
+      updateUI();
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", goToPrevious);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", goToNext);
+    }
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => {
+        currentIndex = index;
+        updateUI();
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goToPrevious();
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goToNext();
+      }
+    });
+
+    if (currentText && currentLink) {
+      currentText.textContent = navItems[currentIndex].name;
+      currentLink.href = navItems[currentIndex].path;
+    }
+  });
+</script>
