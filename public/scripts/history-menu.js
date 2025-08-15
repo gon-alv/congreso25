@@ -64,12 +64,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // === NAVIGATION ARROWS FUNCTIONALITY ===
     // Datos de navegación
     const navItems = [
-        { name: 'ULagos', path: '/' },
-        { name: 'Campus Osorno', path: '/campus-osorno' },
-        { name: 'Sede Pto. Montt', path: '/campus-chinquihue' },
-        { name: 'Sede Chiloé', path: '/sede-chiloe' },
-        { name: 'Sede Santiago', path: '/sede-santiago' },
-        { name: 'Congresos', path: '/congresos' }
+        { name: 'ULagos', path: '/historia/' },
+        { name: 'Campus Osorno', path: '/historia/campus-osorno' },
+        { name: 'Campus Pto. Montt', path: '/historia/campus-chinquihue' },
+        { name: 'Sede Chiloé', path: '/historia/sede-chiloe' },
+        { name: 'Sede Santiago', path: '/historia/sede-santiago' },
+        { name: 'Congresos', path: '/historia/congresos' }
     ];
 
     // Estado inicial para navegación por flechas

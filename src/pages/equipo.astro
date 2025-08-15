@@ -35,11 +35,11 @@ const equipoOrdenado = nancy ? [nancy, ...restoDelEquipo] : restoDelEquipo;
                       class="h-60 w-60 rounded-full object-cover"
                     />
                   </figure>
-                  <h3>{nombre}</h3>
-                  <p class="text-xs text-gray-500 text-shadow-xs font-bold">
+                  <h3 class="mx-3">{nombre}</h3>
+                  <p class="text-xs text-gray-500 text-shadow-xs font-bold mx-3">
                     {cargo}
                   </p>
-                  <p>
+                  <p class="mx-3">
                     <a
                       href={`mailto:${email}`}
                       class="text-2xs text-[var(--primary-hover-color)] underline hover:text-[var(--primary-color)]"
