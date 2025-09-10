@@ -564,14 +564,32 @@ import "../styles/global.css";
 </style>
 
 <script>
+  // Solución optimizada para Astro
   class EventSchedule {
     constructor() {
+      this.isInitialized = false;
       this.init();
     }
 
     init() {
+      // Evitar inicialización múltiple
+      if (this.isInitialized) {
+        this.cleanup();
+      }
+
       this.bindEvents();
       this.animateItems();
+      this.isInitialized = true;
+    }
+
+    cleanup() {
+      // Limpiar event listeners anteriores para evitar duplicados
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach((tab) => {
+        // Clonar el nodo para remover todos los event listeners
+        const newTab = tab.cloneNode(true);
+        tab.parentNode.replaceChild(newTab, tab);
+      });
     }
 
     bindEvents() {
@@ -614,17 +632,100 @@ import "../styles/global.css";
     }
   }
 
-  // Inicializar cuando el DOM esté listo
-  document.addEventListener("DOMContentLoaded", () => {
-    new EventSchedule();
+  // Función para inicializar o reinicializar el componente
+  function initEventSchedule() {
+    // Verificar que estamos en la página correcta
+    if (!document.querySelector(".event-schedule")) {
+      return;
+    }
+
+    // Crear instancia global para poder acceder desde otros lugares si es necesario
+    window.eventScheduleInstance = new EventSchedule();
+  }
+
+  // === INICIALIZACIÓN PARA ASTRO ===
+
+  // 1. Inicialización normal (primera carga)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initEventSchedule);
+  } else {
+    initEventSchedule();
+  }
+
+  // 2. Reinicialización después de navegación Astro (View Transitions)
+  document.addEventListener("astro:page-load", initEventSchedule);
+
+  // 3. Fallback para navegación manual (si no usas View Transitions)
+  document.addEventListener("astro:after-swap", initEventSchedule);
+
+  // 4. Limpieza antes de cambiar de página
+  document.addEventListener("astro:before-swap", () => {
+    if (window.eventScheduleInstance) {
+      window.eventScheduleInstance.cleanup();
+    }
   });
 
-  // También inicializar si Astro ya ha cargado el contenido
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-      new EventSchedule();
+  // 5. Observer como respaldo adicional para cambios de DOM
+  const scheduleObserver = new MutationObserver((mutations) => {
+    let shouldReinit = false;
+
+    mutations.forEach((mutation) => {
+      if (mutation.type === "childList") {
+        // Verificar si se agregó el componente event-schedule
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            if (
+              node.classList?.contains("event-schedule") ||
+              node.querySelector?.(".event-schedule")
+            ) {
+              shouldReinit = true;
+            }
+          }
+        });
+      }
     });
-  } else {
-    new EventSchedule();
-  }
+
+    if (shouldReinit) {
+      setTimeout(initEventSchedule, 100);
+    }
+  });
+
+  // Activar observer
+  scheduleObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+
+  // === SOLUCIÓN PARA EL ERROR DE enabledFeatures ===
+  // Parche defensivo para evitar el error que mencionas
+  window.addEventListener("load", () => {
+    // Verificar si existe la variable args que causa el error
+    if (typeof window.args !== "undefined") {
+      if (!window.args.site) {
+        window.args.site = {};
+      }
+      if (!Array.isArray(window.args.site.enabledFeatures)) {
+        window.args.site.enabledFeatures = [];
+      }
+    }
+  });
+
+  // Función de utilidad para debugging
+  window.debugEventSchedule = () => {
+    console.log("Event Schedule Debug Info:");
+    console.log(
+      "- Component exists:",
+      !!document.querySelector(".event-schedule")
+    );
+    console.log("- Instance exists:", !!window.eventScheduleInstance);
+    console.log("- Tabs count:", document.querySelectorAll(".tab").length);
+    console.log(
+      "- Active tab:",
+      document.querySelector(".tab.active")?.textContent
+    );
+    console.log(
+      "- Active day:",
+      document.querySelector(".day-content.active")?.id
+    );
+  };
 </script>
