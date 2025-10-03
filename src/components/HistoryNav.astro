@@ -235,31 +235,25 @@ const initialIndex = currentIndex !== -1 ? currentIndex : 0;
 
     function updateUI() {
       const currentItem = navItems[currentIndex];
-
       if (currentText) currentText.textContent = currentItem.name;
       if (currentLink) currentLink.href = currentItem.path;
-
       indicators.forEach((indicator, index) => {
-        if (index === currentIndex) {
-          indicator.classList.add("active");
-        } else {
-          indicator.classList.remove("active");
-        }
+        indicator.classList.toggle("active", index === currentIndex);
       });
-
-      window.location.href = currentItem.path;
     }
 
     function goToPrevious() {
       currentIndex =
         currentIndex === 0 ? navItems.length - 1 : currentIndex - 1;
       updateUI();
+      window.location.href = navItems[currentIndex].path;
     }
 
     function goToNext() {
       currentIndex =
         currentIndex === navItems.length - 1 ? 0 : currentIndex + 1;
       updateUI();
+      window.location.href = navItems[currentIndex].path;
     }
 
     if (prevBtn) {
@@ -274,6 +268,7 @@ const initialIndex = currentIndex !== -1 ? currentIndex : 0;
       indicator.addEventListener("click", () => {
         currentIndex = index;
         updateUI();
+        window.location.href = navItems[currentIndex].path;
       });
     });
 
@@ -287,9 +282,6 @@ const initialIndex = currentIndex !== -1 ? currentIndex : 0;
       }
     });
 
-    if (currentText && currentLink) {
-      currentText.textContent = navItems[currentIndex].name;
-      currentLink.href = navItems[currentIndex].path;
-    }
+    updateUI();
   });
 </script>
