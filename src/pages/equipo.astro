@@ -18,23 +18,23 @@ const equipoOrdenado = nancy ? [nancy, ...restoDelEquipo] : restoDelEquipo;
 <Layout title="Equipo organizador">
   <div class="h-full w-full bg-[var(--main-bg-color)]">
     <div
-      class="flex flex-col gap-8 w-[90%] items-center justify-center mt-[8%] lg:mt-25 mb-[5%] mx-[5%] md:pt-10 md:pb-15 border-0 rounded-lg pb-6 shadow-lg bg-gray-50"
+      class="flex flex-col gap-8 w-[90%] items-center justify-center mt-[8%] lg:mt-25 mb-[5%] mx-[5%] lg:pt-10 lg:pb-15 border-0 rounded-lg pb-6 shadow-lg bg-gray-50"
     >
       <h1>Comisión Organizadora Congreso 2025</h1>
-      <div class="grid grid-cols-1 md:grid-cols-3 mx-15">
+      <div class="grid grid-cols-1 lg:grid-cols-3 mx-15">
         {
           await Promise.all(
             equipoOrdenado.map(async (persona) => {
               const { Content } = await render(persona);
               const { nombre, cargo, foto, email } = persona.data;
               return (
-                <div class="border-0 bg-[var(--main-bg-color)] shadow-xl hover:shadow-2xl rounded-2xl bg-red-250 mb-10 mx-5 px-2 pt-3 items-center">
-                  <figure class="flex align-middle justify-center mb-2 transition-all duration-250">
+                <div class="border-0 bg-[var(--main-bg-color)] shadow-xl hover:shadow-2xl rounded-2xl bg-red-250 mb-10 mx-5 items-center">
+                  <div class="flex align-middle justify-center mb-2 transition-all duration-250">
                     <img
                       src={`/images/equipo/${foto}`}
-                      class="h-60 w-60 rounded-full object-cover"
+                      class=" h-100 w-100 rounded-t-xl object-cover"
                     />
-                  </figure>
+                  </div>
                   <h3 class="mx-3">{nombre}</h3>
                   <p class="text-xs text-gray-500 text-shadow-xs font-bold mx-3">
                     {cargo}
