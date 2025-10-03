@@ -8,7 +8,9 @@ const redesArray = redes
   : [];
 ---
 
-<div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col">
+<div
+  class="relative bg-white shadow-md rounded-lg overflow-hidden flex flex-col"
+>
   <img
     src={imagen}
     alt={`Imagen del hotel ${nombre}`}
@@ -73,19 +75,19 @@ const redesArray = redes
     }
     {
       ruta && (
-        <div class="marker-container">
+        <div class="marker-container absolute bottom-5 right-5">
           <a
             href={ruta}
             target="_blank"
             rel="noopener noreferrer"
             class="flex ml-2 mt-5 items-center gap-2 hover:opacity-80 transition-opacity"
           >
+            <h4>Cómo llegar</h4>
             <img
               src="/images/location-pin.svg"
               alt="Distancia desde Universidad"
-              class="w-5 h-5 filter-main hover:filter-main-hover"
+              class="w-8 h-8 filter-main hover:filter-main-hover"
             />
-            <h4>Cómo llegar</h4>
           </a>
         </div>
       )
