@@ -79,21 +79,27 @@ const navItems = [
 <!--
 <script type="module" src="../scripts/menu.js"></script>
 -->
-<script is:client="load">
-  const toggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  if (toggle && mobileMenu) {
-    toggle.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
+<script>
+  function setupMenu() {
+    const toggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (toggle && mobileMenu) {
+      toggle.onclick = () => {
+        mobileMenu.classList.toggle("hidden");
+      };
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.onclick = () => {
+          mobileMenu.classList.add("hidden");
+        };
       });
-    });
+    }
   }
+
+  // Ejecutar en carga inicial
+  setupMenu();
+
+  // Re-ejecutar después de cada navegación de Astro
+  document.addEventListener("astro:page-load", setupMenu);
 </script>
 
 <style>
