@@ -1,7 +1,5 @@
-// src/content/config.ts
 import { defineCollection, z } from "astro:content";
 
-// Colección: equipo
 const equipo = defineCollection({
   schema: z.object({
     nombre: z.string(),
@@ -11,9 +9,8 @@ const equipo = defineCollection({
   })
 });
 
-// Colección: hoteles
 const hoteles = defineCollection({
-  type: 'data', // importante si usas YAML
+  type: 'data',
   schema: z.object({
     nombre: z.string(),
     direccion: z.string(),
@@ -21,6 +18,7 @@ const hoteles = defineCollection({
     email: z.string().email().optional(),
     web: z.string().url().optional(),
     imagen: z.string(),
+    ruta: z.string().optional(),
     redes: z.object({
       facebook: z.string().url().optional(),
       instagram: z.string().url().optional(),

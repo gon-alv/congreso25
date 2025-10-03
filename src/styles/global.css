@@ -45,6 +45,12 @@ h3 {
   vertical-align: left;
 }
 
+h4 {
+  color: rgb(180, 96, 215);
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
 p {
   font-size: 1.15rem;
 }

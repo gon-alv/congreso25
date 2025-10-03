@@ -1,5 +1,6 @@
 ---
-const { nombre, direccion, telefono, email, web, redes, imagen } = Astro.props;
+const { nombre, direccion, telefono, email, web, redes, imagen, ruta } =
+  Astro.props;
 const redesArray = redes
   ? Object.entries(redes)
       .filter(([_, url]) => typeof url === "string" && url.trim() !== "")
@@ -18,26 +19,37 @@ const redesArray = redes
     <h2 class="text-lg font-semibold text-gray-900">{nombre}</h2>
     <p><strong>Dirección:</strong> {direccion}</p>
     <p><strong>Teléfono:</strong> {telefono}</p>
-    <p>
-      <strong>Email:</strong>
-      <a
-        href={`mailto:${email}`}
-        class="text-[var(--primary-hover-color)] hover:underline">{email}</a
-      >
-    </p>
-
-    <p>
-      <strong>Web:</strong>
-      <a
-        href={web}
-        target="_blank"
-        class="text-[var(--primary-hover-color)] hover:underline">{web}</a
-      >
-    </p>
+    {
+      email && (
+        <p>
+          <strong>Email:</strong>
+          <a
+            href={`mailto:${email}`}
+            class="text-[var(--primary-hover-color)] hover:underline"
+          >
+            {email}
+          </a>
+        </p>
+      )
+    }
+    {
+      web && (
+        <p>
+          <strong>Web:</strong>
+          <a
+            href={web}
+            target="_blank"
+            class="text-[var(--primary-hover-color)] hover:underline"
+          >
+            {web}
+          </a>
+        </p>
+      )
+    }
 
     {
       redesArray.length > 0 && (
-        <div class="flex items-center gap-4">
+        <div class="w-full items-center gap-4">
           <ul class="flex gap-4">
             {redesArray.map((red) => (
               <li>
@@ -56,6 +68,25 @@ const redesArray = redes
               </li>
             ))}
           </ul>
+        </div>
+      )
+    }
+    {
+      ruta && (
+        <div class="marker-container">
+          <a
+            href={ruta}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex ml-2 mt-5 items-center gap-2 hover:opacity-80 transition-opacity"
+          >
+            <img
+              src="/images/location-pin.svg"
+              alt="Distancia desde Universidad"
+              class="w-5 h-5 filter-main hover:filter-main-hover"
+            />
+            <h4>Cómo llegar</h4>
+          </a>
         </div>
       )
     }
