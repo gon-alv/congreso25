@@ -15,273 +15,145 @@ const navItems: NavItem[] = [
 
 const currentPath = Astro.url.pathname;
 const currentIndex = navItems.findIndex((item) => item.path === currentPath);
-const initialIndex = currentIndex !== -1 ? currentIndex : 0;
+const prevIndex = (currentIndex - 1 + navItems.length) % navItems.length;
+const nextIndex = (currentIndex + 1) % navItems.length;
 ---
 
-<nav class="navigation-bar">
-  <div class="desktop-nav">
-    <ul class="nav-list">
-      {
-        navItems.map((item) => (
-          <li>
-            <a
-              href={item.path}
-              class={`nav-link ${item.path === currentPath ? "active" : ""}`}
-            >
-              {item.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+<nav class="history-nav-bar">
+  <!-- Navbar tradicional en escritorio -->
+  <ul class="navbar-list">
+    {
+      navItems.map((item) => (
+        <li>
+          <a
+            href={item.path}
+            class={`navbar-link${item.path === currentPath ? " active" : ""}`}
+          >
+            {item.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 
-  <div class="mobile-nav">
-    <div class="nav-controls">
-      <button class="nav-arrow" id="prevBtn" aria-label="Anterior">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="15,18 9,12 15,6"></polyline>
-        </svg>
-      </button>
-
-      <div class="current-item">
-        <a href="/" id="currentLink" class="current-link">
-          <span id="currentText">ULagos</span>
-        </a>
-      </div>
-
-      <button class="nav-arrow" id="nextBtn" aria-label="Siguiente">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="9,18 15,12 9,6"></polyline>
-        </svg>
-      </button>
-    </div>
-
-    <div class="position-indicators">
-      {
-        navItems.map((_, index) => (
-          <button
-            class={`indicator ${index === initialIndex ? "active" : ""}`}
-            data-index={index}
-            aria-label={`Ir a ${navItems[index].name}`}
-          />
-        ))
-      }
-    </div>
+  <!-- Navegación móvil con flechas y título -->
+  <div class="mobile-nav-bar">
+    <button
+      class="nav-btn-svg"
+      id="prevBtn"
+      aria-label="Anterior"
+      onclick={`window.location.href='${navItems[prevIndex].path}'`}
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#888"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <span class="nav-title">{navItems[currentIndex]?.name ?? "Página"}</span>
+    <button
+      class="nav-btn-svg"
+      id="nextBtn"
+      aria-label="Siguiente"
+      onclick={`window.location.href='${navItems[nextIndex].path}'`}
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#888"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="9 6 15 12 9 18"></polyline>
+      </svg>
+    </button>
   </div>
 </nav>
 
 <style>
-  .navigation-bar {
+  .history-nav-bar {
     width: 100%;
     background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Versión Desktop */
-  .desktop-nav {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
-    .desktop-nav {
-      display: block;
-    }
-    .mobile-nav {
-      display: none !important;
-    }
-  }
-
-  .nav-list {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-size: 1.2rem;
     display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-width: 1200px;
-    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
   }
-
-  .nav-link {
-    display: block;
-    padding: 1rem 1.5rem;
+  .navbar-list {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+  }
+  .navbar-link {
     color: #374151;
     text-decoration: none;
-    border-right: 1px solid #e5e7eb;
-    transition: all 0.2s ease;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
-
-  .nav-link:last-child {
-    border-right: none;
+  .navbar-link.active,
+  .navbar-link:hover {
+    color: #4b2992;
+    background: #e1d0ee;
   }
-
-  .nav-link:hover,
-  .nav-link.active {
-    color: var(--primary-hover-color);
-    background: rgba(0, 0, 0, 0.05);
-  }
-
-  /* Versión Mobile */
-  .mobile-nav {
-    display: block;
-    padding: 1rem;
-  }
-
-  .nav-controls {
+  .mobile-nav-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
   }
-
-  .nav-arrow {
+  .nav-title {
+    font-weight: bold;
+    color: #4b2992;
+    font-size: 1.3rem;
+    min-width: 120px;
+    text-align: center;
+  }
+  .nav-btn-svg {
     background: none;
     border: none;
-    color: #374151;
+    padding: 0.25rem;
     cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 0.375rem;
-    transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    justify-content: center;
+    transition: filter 0.2s;
+  }
+  .nav-btn-svg:hover svg {
+    filter: brightness(0.7);
+    stroke: #4b2992;
   }
 
-  .nav-arrow:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--primary-hover-color);
-  }
-
-  .current-item {
-    flex-grow: 1;
-    text-align: center;
-    margin: 0 1rem;
-  }
-
-  .current-link {
-    color: #374151;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: color 0.2s ease;
-  }
-
-  .current-link:hover {
-    color: var(--primary-hover-color);
-  }
-
-  .position-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 0.25rem;
-  }
-
-  .indicator {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    border: none;
-    background: #d1d5db;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .indicator:hover {
-    background: #9ca3af;
-  }
-
-  .indicator.active {
-    background: var(--primary-hover-color);
+  /* Mostrar navbar tradicional solo en escritorio */
+  @media (min-width: 768px) {
+    .navbar-list {
+      display: flex;
+    }
+    .mobile-nav-bar {
+      display: none;
+    }
+    .history-nav-bar {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+    }
   }
 </style>
-
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navItems = [
-      { name: "ULagos", path: "/historia/" },
-      { name: "Campus Osorno", path: "/historia/campus-osorno" },
-      { name: "Campus Pto. Montt", path: "/historia/campus-chinquihue" },
-      { name: "Sede Chiloé", path: "/historia/sede-chiloe" },
-      { name: "Sede Santiago", path: "/historia/sede-santiago" },
-      { name: "Congresos", path: "/historia/congresos" },
-    ];
-
-    let currentIndex = 0;
-    const currentPath = window.location.pathname;
-    const foundIndex = navItems.findIndex((item) => item.path === currentPath);
-    if (foundIndex !== -1) {
-      currentIndex = foundIndex;
-    }
-
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const currentText = document.getElementById("currentText");
-    const currentLink = document.getElementById("currentLink");
-    const indicators = document.querySelectorAll(".indicator");
-
-    function updateUI() {
-      const currentItem = navItems[currentIndex];
-      if (currentText) currentText.textContent = currentItem.name;
-      if (currentLink) currentLink.href = currentItem.path;
-      indicators.forEach((indicator, index) => {
-        indicator.classList.toggle("active", index === currentIndex);
-      });
-    }
-
-    function goToPrevious() {
-      currentIndex =
-        currentIndex === 0 ? navItems.length - 1 : currentIndex - 1;
-      updateUI();
-      window.location.href = navItems[currentIndex].path;
-    }
-
-    function goToNext() {
-      currentIndex =
-        currentIndex === navItems.length - 1 ? 0 : currentIndex + 1;
-      updateUI();
-      window.location.href = navItems[currentIndex].path;
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", goToPrevious);
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", goToNext);
-    }
-
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener("click", () => {
-        currentIndex = index;
-        updateUI();
-        window.location.href = navItems[currentIndex].path;
-      });
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        goToPrevious();
-      } else if (event.key === "ArrowRight") {
-        event.preventDefault();
-        goToNext();
-      }
-    });
-
-    updateUI();
-  });
-</script>
