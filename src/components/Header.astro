@@ -26,7 +26,7 @@ const navItems = [
       </a>
     </div>
 
-    <div class="flex items-center space-x-6 align-middle">
+    <div class="flex items-center space-x-0 align-middle">
       <nav class="desktop-navbar">
         {
           navItems.map((item) => (
@@ -113,11 +113,8 @@ const navItems = [
       });
     }
   }
-
-  // Ejecutar en carga inicial
   setupMenu();
 
-  // Re-ejecutar después de cada navegación de Astro
   document.addEventListener("astro:page-load", setupMenu);
 </script>
 
@@ -140,14 +137,13 @@ const navItems = [
   .navbar-link:hover,
   .navbar-link:focus {
     background: var(--primary-hover-color, #e1d0ee);
-    color: #4b2992;
     outline: none;
   }
   @media (min-width: 1280px) {
     .desktop-navbar {
       display: flex !important;
       align-items: center;
-      gap: 1rem;
+      gap: 0rem;
     }
     #menu-toggle,
     #mobile-menu {
