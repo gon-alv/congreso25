@@ -27,13 +27,10 @@ const navItems = [
     </div>
 
     <div class="flex items-center space-x-6 align-middle">
-      <nav class="h-full align-middle hidden xl:flex font-bold text-white">
+      <nav class="desktop-navbar">
         {
           navItems.map((item) => (
-            <a
-              aref={item.href}
-              alass="hover:bg-linear-to-t from-[var(--primary-color)] to-[var(--primary-hover-color)] pt-10 px-3 duration-700"
-            >
+            <a href={item.href} class="navbar-link">
               {item.label}
             </a>
           ))
@@ -125,8 +122,37 @@ const navItems = [
 </script>
 
 <style>
-  nav a {
+  .desktop-navbar {
+    display: none;
+  }
+  .navbar-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.375rem;
+    transition:
+      background 0.2s,
+      color 0.2s;
     font-size: 1.1rem;
+    display: inline-block;
+  }
+  .navbar-link:hover,
+  .navbar-link:focus {
+    background: var(--primary-hover-color, #e1d0ee);
+    color: #4b2992;
+    outline: none;
+  }
+  @media (min-width: 1280px) {
+    .desktop-navbar {
+      display: flex !important;
+      align-items: center;
+      gap: 1rem;
+    }
+    #menu-toggle,
+    #mobile-menu {
+      display: none !important;
+    }
   }
   @keyframes menuOpen {
     from {
@@ -138,17 +164,6 @@ const navItems = [
       opacity: 1;
     }
   }
-  @keyframes menuClose {
-    from {
-      max-height: 500px;
-      opacity: 1;
-    }
-    to {
-      max-height: 0;
-      opacity: 0;
-    }
-  }
-  /* New keyframes for navmenu closing animation */
   @keyframes navMenuFadeOut {
     0% {
       opacity: 1;
@@ -166,12 +181,15 @@ const navItems = [
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    animation: navMenuFadeOut 0.5s forwards;
+    animation: none;
   }
   .mobile-menu-anim:not(.hidden) {
     max-height: 500px;
     opacity: 1;
     animation: menuOpen 0.5s forwards;
+  }
+  .mobile-menu-anim.hidden {
+    animation: navMenuFadeOut 0.5s forwards;
   }
 
   @keyframes iconShowClockwise {
@@ -214,28 +232,45 @@ const navItems = [
       transform: scale(0.8) rotate(90deg);
     }
   }
-  #hamburger-icon {
-    transition: none;
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-    animation: iconShowCounterClockwise 0.5s forwards;
-  }
-  #hamburger-icon.hidden {
-    opacity: 0;
-    transform: scale(0.8) rotate(90deg);
-    pointer-events: none;
-    animation: iconHideClockwise 0.5s forwards;
-  }
+  #hamburger-icon,
   #close-icon {
     transition: none;
     opacity: 1;
-    transform: scale(1) rotate(180deg);
-    animation: iconShowClockwise 0.5s forwards;
+    pointer-events: auto;
+    animation: none;
+  }
+  #hamburger-icon.hidden {
+    opacity: 0;
+    pointer-events: none;
+    animation: iconHideClockwise 0.5s forwards;
+    transform: scale(0.8) rotate(90deg);
   }
   #close-icon.hidden {
     opacity: 0;
-    transform: scale(0.8) rotate(-90deg);
     pointer-events: none;
     animation: iconHideCounterClockwise 0.5s forwards;
+    transform: scale(0.8) rotate(-90deg);
+  }
+  #hamburger-icon:not(.hidden) {
+    animation: iconShowCounterClockwise 0.5s forwards;
+    transform: scale(1) rotate(0deg);
+  }
+  #close-icon:not(.hidden) {
+    animation: iconShowClockwise 0.5s forwards;
+    transform: scale(1) rotate(180deg);
+  }
+
+  /* Standard navbar styles for desktop */
+  nav.h-full.align-middle.hidden.xl\:flex.font-bold.text-white {
+    display: none;
+  }
+  @media (min-width: 1280px) {
+    nav.h-full.align-middle.hidden.xl\:flex.font-bold.text-white {
+      display: flex !important;
+    }
+    .mobile-menu-anim,
+    #menu-toggle {
+      display: none !important;
+    }
   }
 </style>
