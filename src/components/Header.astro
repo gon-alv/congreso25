@@ -31,8 +31,8 @@ const navItems = [
         {
           navItems.map((item) => (
             <a
-              href={item.href}
-              class="hover:bg-linear-to-t from-[var(--primary-color)] to-[var(--primary-hover-color)] pt-10 px-3 duration-7000"
+              aref={item.href}
+              alass="hover:bg-linear-to-t from-[var(--primary-color)] to-[var(--primary-hover-color)] pt-10 px-3 duration-700"
             >
               {item.label}
             </a>
@@ -42,11 +42,12 @@ const navItems = [
 
       <button
         id="menu-toggle"
-        class="xl:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-[var(--active-color)]"
+        class="xl:hidden p-2 rounded focus:outline-none"
         aria-label="Abrir menú"
       >
         <svg
-          class="w-12 h-12"
+          id="hamburger-icon"
+          class="w-12 h-12 block"
           fill="none"
           stroke="white"
           stroke-width="2.5"
@@ -54,7 +55,22 @@ const navItems = [
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
+          <path id="line1" d="M4 6h16"></path>
+          <path id="line2" d="M4 12h16"></path>
+          <path id="line3" d="M4 18h16"></path>
+        </svg>
+        <svg
+          id="close-icon"
+          class="w-12 h-12 hidden"
+          fill="none"
+          stroke="white"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="6" y1="18" x2="18" y2="6"></line>
         </svg>
       </button>
     </div>
@@ -62,7 +78,7 @@ const navItems = [
 
   <div
     id="mobile-menu"
-    class="hidden xl:hidden px-15 mt-3 pb-4 bg-[#e1d0ee] border-t border-gray-200 transition-all duration-300 ease-in-out"
+    class="hidden xl:hidden px-15 mt-3 pb-4 bg-[#e1d0ee] border-t border-gray-200 mobile-menu-anim"
   >
     {
       navItems.map((item) => (
@@ -83,13 +99,19 @@ const navItems = [
   function setupMenu() {
     const toggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
-    if (toggle && mobileMenu) {
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
+    if (toggle && mobileMenu && hamburgerIcon && closeIcon) {
       toggle.onclick = () => {
         mobileMenu.classList.toggle("hidden");
+        hamburgerIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
       };
       mobileMenu.querySelectorAll("a").forEach((link) => {
         link.onclick = () => {
           mobileMenu.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
         };
       });
     }
@@ -105,5 +127,115 @@ const navItems = [
 <style>
   nav a {
     font-size: 1.1rem;
+  }
+  @keyframes menuOpen {
+    from {
+      max-height: 0;
+      opacity: 0;
+    }
+    to {
+      max-height: 500px;
+      opacity: 1;
+    }
+  }
+  @keyframes menuClose {
+    from {
+      max-height: 500px;
+      opacity: 1;
+    }
+    to {
+      max-height: 0;
+      opacity: 0;
+    }
+  }
+  /* New keyframes for navmenu closing animation */
+  @keyframes navMenuFadeOut {
+    0% {
+      opacity: 1;
+      max-height: 500px;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      max-height: 0;
+      transform: translateY(-20px);
+    }
+  }
+  .mobile-menu-anim {
+    transition: none;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    animation: navMenuFadeOut 0.5s forwards;
+  }
+  .mobile-menu-anim:not(.hidden) {
+    max-height: 500px;
+    opacity: 1;
+    animation: menuOpen 0.5s forwards;
+  }
+
+  @keyframes iconShowClockwise {
+    from {
+      opacity: 0;
+      transform: scale(0.8) rotate(-90deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(180deg);
+    }
+  }
+  @keyframes iconHideCounterClockwise {
+    from {
+      opacity: 1;
+      transform: scale(1) rotate(180deg);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.8) rotate(-90deg);
+    }
+  }
+  @keyframes iconShowCounterClockwise {
+    from {
+      opacity: 0;
+      transform: scale(0.8) rotate(90deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  @keyframes iconHideClockwise {
+    from {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.8) rotate(90deg);
+    }
+  }
+  #hamburger-icon {
+    transition: none;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    animation: iconShowCounterClockwise 0.5s forwards;
+  }
+  #hamburger-icon.hidden {
+    opacity: 0;
+    transform: scale(0.8) rotate(90deg);
+    pointer-events: none;
+    animation: iconHideClockwise 0.5s forwards;
+  }
+  #close-icon {
+    transition: none;
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+    animation: iconShowClockwise 0.5s forwards;
+  }
+  #close-icon.hidden {
+    opacity: 0;
+    transform: scale(0.8) rotate(-90deg);
+    pointer-events: none;
+    animation: iconHideCounterClockwise 0.5s forwards;
   }
 </style>
