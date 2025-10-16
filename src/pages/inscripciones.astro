@@ -9,6 +9,9 @@ import "../styles/global.css";
       <div class="h-20"></div>
       <h1>Transformación Digital e Inteligencia Artificial</h1>
       <h2>Universidad de Los Lagos</h2>
+      <div class="aviso">
+        <p class="texto-aviso">AVISO: Inscripciones Cerradas!</p>
+      </div>
     </header>
 
     <div class="content-card">
@@ -146,26 +149,7 @@ import "../styles/global.css";
     </div>
 
     <div class="cta-section">
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSfRB9KkISGQJRbfX0vYlyWWWyTllt60RQRuJGWMzpndeXWPkw/viewform"
-        target="_blank"
-        rel="noreferrer noopener"
-        class="cta-button"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path d="M9 12l2 2 4-4"></path>
-          <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-          <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
-        </svg>
-        Inscríbete Ahora
-      </a>
+      <a href="#" class="cta-button-disabled"> - Inscripciones Cerradas - </a>
       <div class="sence-code">Código SENCE: 1238082981</div>
     </div>
     <div class="text-center text-3xl mt-5">
@@ -175,7 +159,7 @@ import "../styles/global.css";
         >
         <h></h>
       </h>
-      <div class="final-message">¡Que tengas una excelente experiencia!</div>
+      <div class="final-message">¡Nos vemos en Noviembre!</div>
     </div>
   </div>
 
@@ -198,6 +182,7 @@ import "../styles/global.css";
         var(--primary) 0%,
         var(--secondary) 100%
       );
+      --gradient-disabled: linear-gradient(135deg, #464646 0%, #888888 100%);
       --gradient-light: linear-gradient(
         135deg,
         var(--bg-light) 0%,
@@ -581,6 +566,48 @@ import "../styles/global.css";
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 20px 40px -10px rgba(116, 43, 138, 0.4);
     }
+    .cta-button-disabled {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--gradient-disabled);
+      color: white;
+      padding: 1.25rem 3rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.25rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button-disabled::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: left 0.6s;
+    }
+
+    .cta-button-disabled:hover::before {
+      left: 100%;
+    }
+
+    .cta-button-disabled:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 40px -10px rgba(116, 43, 138, 0.4);
+    }
 
     .sence-code {
       background: rgba(5, 150, 105, 0.1);
@@ -684,9 +711,39 @@ import "../styles/global.css";
       border-radius: 1.5rem;
     }
 
+    .aviso {
+      background-color: rgb(247, 196, 196);
+      margin-inline: 25%;
+      padding-inline: 2%;
+      padding-block: 15px;
+      border-width: 3px;
+      border-radius: 25px;
+      border-color: #ff9090;
+    }
+
+    .aviso p {
+      font-size: xx-large;
+      color: #f15b5b;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
-      .container {
+      .container {*/\7
+
+
+
+
+
+
+
+
+
+
+
+
+
+        -*
+
         padding: 0 1rem;
       }
 
